@@ -238,6 +238,16 @@
     display:block; font-size:11px; margin-top:5px; color:var(--pitch); text-decoration:none;
   }
   .m-link:hover{ text-decoration:underline; }
+  .m-links-row{
+    display:flex; align-items:center; justify-content:flex-end; gap:8px; margin-top:5px;
+  }
+  .m-video{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:20px; height:20px; border-radius:5px;
+    color:var(--amber-dim); background:rgba(226,163,61,0.16);
+    text-decoration:none; flex-shrink:0;
+  }
+  .m-video:hover{ background:var(--amber); color:var(--navy); }
 
   .empty-state{
     text-align:center; padding:60px 20px; color:var(--muted);
@@ -295,6 +305,9 @@
         </select>
       </div>
       <button class="reset-btn" id="resetBtn">Reset filters</button>
+      <div class="legend-note" style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;">
+        <span class="m-video" style="cursor:default;"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg></span> broadcast available
+      </div>
       <div class="result-count" id="resultCount"></div>
     </div>
     <div class="row">
@@ -673,34 +686,34 @@ const RAW = [
 // ===== MEN'S 50/55 =====
 ["m5055","2026-07-22","08:30","Field 9","Ireland","IRL","Scotland","SCO","Round 1",10541,0],
 ["m5055","2026-07-22","08:30","Field 7","Jersey","JEY","Portugal M55","PRT","Round 1",10540,0],
-["m5055","2026-07-22","08:30","Field 13","Portugal","PRT","Wales","WAL","Round 1",10547,0],
-["m5055","2026-07-22","09:25","Field 12","France","FRA","England M55","ENG","Round 1",10546,0],
+["m5055","2026-07-22","08:30","Field 8","Portugal","PRT","Wales","WAL","Round 1",10547,0],
+["m5055","2026-07-22","09:25","Field 5","France","FRA","England M55","ENG","Round 1",10546,0],
 ["m5055","2026-07-22","09:25","Field 7","England","ENG","Wales M55","WAL","Round 1",10539,0],
 ["m5055","2026-07-22","12:10","Field 2","Chile","CHL","England M55","ENG","Round 2",10548,0],
-["m5055","2026-07-22","12:10","Field 12","England","ENG","Portugal M55","PRT","Round 2",10542,0],
+["m5055","2026-07-22","14:00","Field 6","England","ENG","Portugal M55","PRT","Round 2",10542,0],
 ["m5055","2026-07-22","13:05","Field 6","Wales M55","WAL","Scotland","SCO","Round 2",10543,0],
 ["m5055","2026-07-22","13:05","Field 8","France","FRA","Portugal","PRT","Round 2",10550,0],
 ["m5055","2026-07-22","14:00","Field 2","Jersey","JEY","Ireland","IRL","Round 2",10544,0],
-["m5055","2026-07-22","15:50","Field 8","Chile","CHL","Wales","WAL","Round 3",10557,0],
-["m5055","2026-07-22","15:50","Field 5","England","ENG","Scotland","SCO","Round 3",10551,0],
-["m5055","2026-07-22","16:45","Field 9","Wales M55","WAL","Jersey","JEY","Round 3",10553,0],
-["m5055","2026-07-22","16:45","Field 10","Portugal M55","PRT","Ireland","IRL","Round 3",10552,0],
-["m5055","2026-07-23","08:30","Field 10","England M55","ENG","Portugal","PRT","Round 3",10558,0],
-["m5055","2026-07-23","08:30","Field 12","Wales","WAL","France","FRA","Round 4",10561,0],
-["m5055","2026-07-23","08:30","Field 8","Portugal M55","PRT","Wales M55","WAL","Round 4",10556,0],
+["m5055","2026-07-22","16:45","Field 5","Chile","CHL","Wales","WAL","Round 3",10557,0],
+["m5055","2026-07-22","16:45","Field 8","England","ENG","Scotland","SCO","Round 3",10551,0],
+["m5055","2026-07-22","17:40","Field 9","Wales M55","WAL","Jersey","JEY","Round 3",10553,0],
+["m5055","2026-07-22","17:40","Field 7","Portugal M55","PRT","Ireland","IRL","Round 3",10552,0],
+["m5055","2026-07-23","08:30","Field 3","England M55","ENG","Portugal","PRT","Round 3",10558,0],
+["m5055","2026-07-23","08:30","Field 8","Wales","WAL","France","FRA","Round 4",10561,0],
+["m5055","2026-07-23","08:30","Field 5","Portugal M55","PRT","Wales M55","WAL","Round 4",10556,0],
 ["m5055","2026-07-23","09:25","Field 9","Scotland","SCO","Jersey","JEY","Round 4",10555,0],
-["m5055","2026-07-23","09:25","Field 13","England","ENG","Ireland","IRL","Round 4",10554,0],
-["m5055","2026-07-23","11:15","Field 7","Chile","CHL","Portugal","PRT","Round 4",10560,0],
+["m5055","2026-07-23","08:30","Field 7","England","ENG","Ireland","IRL","Round 4",10554,0],
+["m5055","2026-07-23","12:10","Field 7","Chile","CHL","Portugal","PRT","Round 4",10560,0],
 ["m5055","2026-07-23","13:05","Field 8","England","ENG","Jersey","JEY","Round 5",10563,0],
-["m5055","2026-07-23","14:00","Field 10","Wales","WAL","England M55","ENG","Round 5",10568,0],
-["m5055","2026-07-23","14:00","Field 2","Scotland","SCO","Portugal M55","PRT","Round 5",10565,0],
-["m5055","2026-07-23","14:00","Field 5","Chile","CHL","France","FRA","Round 5",10566,0],
-["m5055","2026-07-23","14:55","Field 11","Ireland","IRL","Wales M55","WAL","Round 5",10564,0],
+["m5055","2026-07-23","14:00","Field 9","Wales","WAL","England M55","ENG","Round 5",10568,0],
+["m5055","2026-07-23","14:55","Field 1","Scotland","SCO","Portugal M55","PRT","Round 5",10565,0],
+["m5055","2026-07-23","14:55","Field 5","Chile","CHL","France","FRA","Round 5",10566,0],
+["m5055","2026-07-23","15:50","Field 7","Ireland","IRL","Wales M55","WAL","Round 5",10564,0],
 ["m5055","2026-07-24","08:30","Field 4","Portugal M55","PRT","England M55","ENG","M55 Round 2",10595,0],
 ["m5055","2026-07-24","11:15","Field 8","Wales M55","WAL","England M55","ENG","M55 Round 3",10596,0],
 ["m5055","2026-07-24","14:10","Field 2","Wales M55","WAL","Portugal M55","PRT","M55 Round 4",10597,0],
-["m5055","2026-07-24","17:00","Field 13","England M55","ENG","Portugal M55","PRT","M55 Round 5",10598,0],
-["m5055","2026-07-25","08:30","Field 1","England M55","ENG","Portugal M55","PRT","M55 Round 6",10599,0],
+["m5055","2026-07-24","17:00","Field 5","England M55","ENG","Portugal M55","PRT","M55 Round 5",10598,0],
+["m5055","2026-07-25","08:30","Field 3","England M55","ENG","Wales M55","WAL","M55 Round 6",10599,0],
 ["m5055","2026-07-25","11:30","Field 8","1st","","2nd","","M55 Gold Medal",10581,1],
 ["m5055","2026-07-24","16:00","Field 4","1st Pool A","","4th Pool B","","M50 Quarter Final 1",10569,1],
 ["m5055","2026-07-24","16:00","Field 2","3rd Pool A","","2nd Pool B","","M50 Quarter Final 3",10571,1],
@@ -708,7 +721,7 @@ const RAW = [
 ["m5055","2026-07-24","16:00","Field 1","2nd Pool A","","3rd Pool B","","M50 Quarter Final 2",10570,1],
 ["m5055","2026-07-24","19:00","Field 5","Loser QF2","","Loser QF4","","M50 5th/8th Playoff 2",10576,1],
 ["m5055","2026-07-24","19:00","Field 3","Loser QF1","","Loser QF3","","M50 5th/8th Playoff 1",10575,1],
-["m5055","2026-07-24","19:00","Field 4","Winner QF1","","Winner QF3","","M50 Semi Final 1",10573,1],
+["m5055","2026-07-24","19:00","Field 1","Winner QF1","","Winner QF3","","M50 Semi Final 1",10573,1],
 ["m5055","2026-07-24","19:00","Field 8","Winner QF2","","Winner QF4","","M50 Semi Final 2",10574,1],
 ["m5055","2026-07-25","08:30","Field 9","Loser 5/8 PO1","","Loser 5/8 PO2","","M50 7th/8th Playoff",10578,1],
 ["m5055","2026-07-25","10:30","Field 4","Winner 5/8 PO1","","Winner 5/8 PO2","","M50 5th/6th Playoff",10577,1],
@@ -721,6 +734,21 @@ const MATCHES = RAW.map(r => ({
   teamA:r[4], codeA:r[5], teamB:r[6], codeB:r[7],
   round:r[8], id:r[9], isFinal:r[10]
 }));
+
+/* Matches with a broadcast livestream/video available on the official site.
+   This list is as-published; more get added as the broadcast schedule fills in. */
+const VIDEO_IDS = new Set([
+  // Men's Open
+  10163,10168,10166,10169,10174,10179,10185,10188,10190,
+  // Women's Open
+  10198,10196,10194,10203,10207,10213,10214,10227,
+  // Mixed Open
+  10426,10425,10428,10416,10423,10445,10433,10435,10447,10437,10448,10442,10454,10466,10468,10477,10478,10476,10475,10486,
+  // Men's 50/55
+  10547,10548,10550,10544,10551,10563,10568,10565,10596,10597,10581,10571,10570,10580
+]);
+
+const CAMERA_ICON = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>';
 
 /* ---------------- Build controls ---------------- */
 const nationSel = document.getElementById('nationSel');
@@ -771,6 +799,9 @@ const resultCount = document.getElementById('resultCount');
 
 function matchStatsUrl(m){
   return `https://www.internationaltouch.org/events/euros/2026/${CATEGORIES[m.cat].slug}/match:${m.id}/`;
+}
+function matchVideoUrl(m){
+  return `https://www.internationaltouch.org/events/euros/2026/${CATEGORIES[m.cat].slug}/match:${m.id}/video/`;
 }
 
 function render(){
@@ -828,7 +859,10 @@ function render(){
           <div class="m-meta">
             <span class="m-round">${m.round}</span>
             <span class="m-cat">${CATEGORIES[m.cat].label}</span>
-            <a class="m-link" href="${matchStatsUrl(m)}" target="_blank" rel="noopener">Match stats →</a>
+            <div class="m-links-row">
+              <a class="m-link" href="${matchStatsUrl(m)}" target="_blank" rel="noopener">Match stats →</a>
+              ${VIDEO_IDS.has(m.id) ? `<a class="m-video" href="${matchVideoUrl(m)}" target="_blank" rel="noopener" title="Broadcast available">${CAMERA_ICON}</a>` : ""}
+            </div>
           </div>
         </div>`;
     });
