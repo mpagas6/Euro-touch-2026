@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETC 2026 · Vichy — Match Explorer</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0F3D2E">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ETC 2026">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pitch:#0F3D2E;
+    --pitch-2:#154A38;
+    --chalk:#F5F2E9;
+    --line:#DCD5C3;
+    --amber:#E2A33D;
+    --amber-dim:#7A5A24;
+    --navy:#16233B;
+    --ink:#182A22;
+    --muted:#5C6F63;
+    --card:#FFFFFF;
+    --gold:#C89B3C;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--chalk);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber);color:var(--navy);}
+
+  /* ---------- Header ---------- */
+  header{
+    background:
+      radial-gradient(ellipse at 20% -20%, rgba(226,163,61,0.18), transparent 55%),
+      linear-gradient(180deg, var(--pitch) 0%, var(--pitch-2) 100%);
+    color:var(--chalk);
+    padding:38px 20px 26px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:4px solid var(--amber);
+  }
+  header::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(245,242,233,0.05) 0 1px, transparent 1px 90px);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--amber);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:2px;background:var(--amber);display:inline-block;
+  }
+  h1{
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    font-size:clamp(30px,5vw,52px);
+    line-height:0.98;
+    letter-spacing:.01em;
+    margin:10px 0 6px;
+    text-transform:uppercase;
+  }
+  h1 span{color:var(--amber);}
+  .sub{
+    font-size:14.5px;
+    color:#CFE0D6;
+    max-width:640px;
+    line-height:1.5;
+  }
+  .hero-stats{
+    display:flex; gap:26px; margin-top:22px; flex-wrap:wrap;
+  }
+  .hero-stat b{
+    font-family:'Oswald',sans-serif;
+    font-size:26px; display:block; color:var(--chalk); line-height:1;
+  }
+  .hero-stat span{
+    font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--amber);
+  }
+
+  /* ---------- Controls ---------- */
+  .controls-wrap{
+    position:sticky; top:0; z-index:20;
+    background:rgba(245,242,233,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .controls{
+    max-width:1180px; margin:0 auto; padding:14px 20px 12px;
+  }
+  .row{
+    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+  }
+  .row + .row{ margin-top:10px; }
+  .field-group{ display:flex; flex-direction:column; gap:4px; }
+  .field-group label{
+    font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:600;
+  }
+  select, input[type="text"]{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:13.5px;
+    padding:8px 10px;
+    border-radius:7px;
+    border:1.5px solid var(--line);
+    background:var(--card);
+    color:var(--ink);
+    min-width:150px;
+  }
+  select:focus, input:focus{ outline:2px solid var(--amber); outline-offset:1px; }
+  input[type="text"]{ min-width:200px; }
+
+  .chips{ display:flex; gap:7px; flex-wrap:wrap; }
+  .chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1.5px solid var(--line);
+    background:var(--card);
+    color:var(--muted);
+    cursor:pointer;
+    user-select:none;
+    transition:.12s;
+    white-space:nowrap;
+  }
+  .chip:hover{ border-color:var(--amber); color:var(--ink); }
+  .chip.active{
+    background:var(--pitch); color:var(--chalk); border-color:var(--pitch);
+  }
+  .chip.active.amber{ background:var(--amber); border-color:var(--amber); color:var(--navy); }
+
+  .reset-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; color:var(--muted); background:none; border:none;
+    cursor:pointer; text-decoration:underline; padding:6px 4px;
+  }
+  .reset-btn:hover{ color:var(--ink); }
+
+  .result-count{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; color:var(--muted); margin-left:auto; white-space:nowrap;
+  }
+
+  /* ---------- Main list ---------- */
+  main{ max-width:1180px; margin:0 auto; padding:24px 20px 80px; }
+
+  .day-heading{
+    font-family:'Oswald',sans-serif;
+    font-size:20px;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    color:var(--pitch);
+    display:flex; align-items:baseline; gap:10px;
+    margin:34px 0 14px;
+    border-bottom:2px solid var(--pitch);
+    padding-bottom:8px;
+  }
+  .day-heading:first-child{ margin-top:0; }
+  .day-heading .count{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; color:var(--muted); font-weight:400; letter-spacing:0;
+    text-transform:none;
+  }
+
+  .match-grid{
+    display:grid; gap:8px;
+  }
+
+  .match{
+    display:grid;
+    grid-template-columns:64px 1fr auto;
+    gap:14px;
+    align-items:center;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--pitch);
+    border-radius:8px;
+    padding:11px 14px;
+    transition:.12s;
+  }
+  .match:hover{ border-left-color:var(--amber); box-shadow:0 2px 10px rgba(15,61,46,0.08); }
+  .match.final-series{ border-left-color:var(--gold); }
+
+  .m-time{
+    font-family:'Oswald',sans-serif;
+    font-size:17px; color:var(--ink); font-weight:600; line-height:1.1;
+  }
+  .m-field{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px; color:var(--muted); margin-top:2px;
+  }
+
+  .m-teams{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    font-size:14.5px;
+  }
+  .m-team{ display:flex; align-items:center; gap:7px; font-weight:500; }
+  .m-flag{
+    font-size:16px; line-height:1; flex-shrink:0;
+  }
+  .m-vs{ color:var(--amber-dim); font-family:'IBM Plex Mono',monospace; font-size:12px; }
+  .m-score{
+    font-family:'Oswald',sans-serif; font-weight:600; font-size:16px;
+    color:var(--pitch); background:rgba(15,61,46,0.08);
+    padding:2px 9px; border-radius:5px; letter-spacing:.02em;
+  }
+  .match.played{ border-left-color:var(--pitch); }
+  .match.played.final-series{ border-left-color:var(--gold); }
+
+  .m-meta{ text-align:right; }
+  .m-round{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--pitch); font-weight:600;
+    background:rgba(15,61,46,0.08); padding:3px 8px; border-radius:5px;
+    display:inline-block;
+  }
+  .final-series .m-round{ color:var(--amber-dim); background:rgba(226,163,61,0.16); }
+  .m-cat{
+    display:block; font-size:11px; color:var(--muted); margin-top:5px;
+  }
+  .m-link{
+    display:block; font-size:11px; margin-top:5px; color:var(--pitch); text-decoration:none;
+  }
+  .m-link:hover{ text-decoration:underline; }
+  .m-links-row{
+    display:flex; align-items:center; justify-content:flex-end; gap:8px; margin-top:5px;
+  }
+  .m-video{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:20px; height:20px; border-radius:5px;
+    color:var(--amber-dim); background:rgba(226,163,61,0.16);
+    text-decoration:none; flex-shrink:0;
+  }
+  .m-video:hover{ background:var(--amber); color:var(--navy); }
+
+  .empty-state{
+    text-align:center; padding:60px 20px; color:var(--muted);
+    font-family:'IBM Plex Mono',monospace; font-size:13px;
+  }
+
+  footer{
+    text-align:center; padding:26px 20px 40px; font-size:12px; color:var(--muted);
+    font-family:'IBM Plex Mono',monospace;
+  }
+  footer a{ color:var(--pitch); }
+
+  @media (max-width:640px){
+    .match{ grid-template-columns:52px 1fr; }
+    .m-meta{ grid-column:1/-1; text-align:left; margin-top:4px; }
+    .result-count{ width:100%; margin-left:0; order:99; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">#etc2026 · Vichy, France · 21–25 Jul 2026</div>
+  <h1>European <span>Touch</span><br>Championships</h1>
+  <div class="sub">Every pool match, playoff and final across all 11 divisions — filter by nation, division, or day to find exactly the games you care about. All times are local (Europe/Paris).</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><b id="statMatches">–</b><span>Matches</span></div>
+    <div class="hero-stat"><b>11</b><span>Divisions</span></div>
+    <div class="hero-stat"><b>16</b><span>Nations</span></div>
+    <div class="hero-stat"><b>5</b><span>Days</span></div>
+  </div>
+  <div id="syncStatus" style="margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber);opacity:0.85;"></div>
+</header>
+
+<div class="controls-wrap">
+  <div class="controls">
+    <div class="row">
+      <div class="field-group" style="flex:1;min-width:220px;">
+        <label for="search">Search team</label>
+        <input type="text" id="search" placeholder="e.g. Portugal, Scotland…">
+      </div>
+      <div class="field-group">
+        <label for="nationSel">Nation</label>
+        <select id="nationSel"><option value="">All nations</option></select>
+      </div>
+      <div class="field-group">
+        <label for="catSel">Division</label>
+        <select id="catSel"><option value="">All divisions</option></select>
+      </div>
+      <div class="field-group">
+        <label for="stageSel">Stage</label>
+        <select id="stageSel">
+          <option value="">All stages</option>
+          <option value="pool">Pool / Round robin</option>
+          <option value="final">Finals series</option>
+        </select>
+      </div>
+      <button class="reset-btn" id="resetBtn">Reset filters</button>
+      <div class="legend-note" style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;">
+        <span class="m-video" style="cursor:default;"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg></span> broadcast available
+      </div>
+      <div class="result-count" id="resultCount"></div>
+    </div>
+    <div class="row">
+      <div class="chips" id="dayChips"></div>
+    </div>
+  </div>
+</div>
+
+<main id="main"></main>
+
+<footer>
+  Data sourced from internationaltouch.org/events/euros/2026 · Built for following #etc2026 · Portugal M50 squad included in Men's 50/55
+</footer>
+
+<script>
+/* ---------------- Category metadata ---------------- */
+const CATEGORIES = {
+  mo:    {label:"Men's Open",    slug:"mens-open"},
+  wo:    {label:"Women's Open",  slug:"womens-open"},
+  xo:    {label:"Mixed Open",    slug:"mixed-open"},
+  w27:   {label:"Women's 27",    slug:"womens-27"},
+  m3035: {label:"Men's 30/35",   slug:"mens-3035"},
+  x30:   {label:"Mixed 30",      slug:"mixed-30"},
+  w35:   {label:"Women's 35",    slug:"womens-35"},
+  m40:   {label:"Men's 40",      slug:"mens-40"},
+  w40:   {label:"Women's 40",    slug:"womens-40"},
+  m45:   {label:"Men's 45",      slug:"mens-45"},
+  m5055: {label:"Men's 50/55",   slug:"mens-5055"}
+};
+
+const NATIONS = ["BEL","CYM","CHL","ENG","EUR","FRA","DEU","IRL","ITA","JEY","NLD","PRT","SCO","ESP","CHE","WAL"];
+const NATION_NAMES = {
+  BEL:"Belgium", CYM:"Cayman Islands", CHL:"Chile", ENG:"England", EUR:"Europe (Select/Stars)",
+  FRA:"France", DEU:"Germany", IRL:"Ireland", ITA:"Italy", JEY:"Jersey", NLD:"Netherlands",
+  PRT:"Portugal", SCO:"Scotland", ESP:"Spain", CHE:"Switzerland", WAL:"Wales"
+};
+const NATION_FLAGS = {
+  BEL:"🇧🇪", CYM:"🇰🇾", CHL:"🇨🇱", ENG:"🏴󠁧󠁢󠁥󠁮󠁧󠁿", EUR:"🇪🇺",
+  FRA:"🇫🇷", DEU:"🇩🇪", IRL:"🇮🇪", ITA:"🇮🇹", JEY:"🇯🇪", NLD:"🇳🇱",
+  PRT:"🇵🇹", SCO:"🏴󠁧󠁢󠁳󠁣󠁴󠁿", ESP:"🇪🇸", CHE:"🇨🇭", WAL:"🏴󠁧󠁢󠁷󠁬󠁳󠁿"
+};
+
+let MATCHES = [];
+let GENERATED_AT = null;
+let days = [];
+let activeDay = "";
+
+const CAMERA_ICON = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>';
+
+/* ---------------- Build static controls ---------------- */
+const nationSel = document.getElementById('nationSel');
+NATIONS.slice().sort((a,b)=>NATION_NAMES[a].localeCompare(NATION_NAMES[b])).forEach(code=>{
+  const o = document.createElement('option');
+  o.value = code; o.textContent = NATION_NAMES[code];
+  nationSel.appendChild(o);
+});
+
+const catSel = document.getElementById('catSel');
+Object.entries(CATEGORIES).forEach(([key,c])=>{
+  const o = document.createElement('option');
+  o.value = key; o.textContent = c.label;
+  catSel.appendChild(o);
+});
+
+const dayChips = document.getElementById('dayChips');
+function dayLabel(d){
+  const dt = new Date(d+"T12:00:00");
+  return dt.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+}
+function renderDayChips(){
+  dayChips.innerHTML = "";
+  const allChip = document.createElement('div');
+  allChip.className = 'chip amber' + (activeDay==="" ? ' active' : '');
+  allChip.textContent = 'All days';
+  allChip.onclick = ()=>{ activeDay=""; renderDayChips(); render(); };
+  dayChips.appendChild(allChip);
+  days.forEach(d=>{
+    const c = document.createElement('div');
+    c.className = 'chip' + (activeDay===d ? ' active' : '');
+    c.textContent = dayLabel(d);
+    c.onclick = ()=>{ activeDay = (activeDay===d ? "" : d); renderDayChips(); render(); };
+    dayChips.appendChild(c);
+  });
+}
+
+/* ---------------- Filtering & rendering ---------------- */
+const searchInput = document.getElementById('search');
+const stageSel = document.getElementById('stageSel');
+const main = document.getElementById('main');
+const resultCount = document.getElementById('resultCount');
+const syncStatus = document.getElementById('syncStatus');
+
+function matchStatsUrl(m){
+  return `https://www.internationaltouch.org/events/euros/2026/${CATEGORIES[m.cat].slug}/match:${m.id}/`;
+}
+function matchVideoUrl(m){
+  return `https://www.internationaltouch.org/events/euros/2026/${CATEGORIES[m.cat].slug}/match:${m.id}/video/`;
+}
+
+function formatSyncTime(iso){
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (isNaN(d)) return "";
+  const now = new Date();
+  const diffMin = Math.round((now - d) / 60000);
+  let rel;
+  if (diffMin < 1) rel = "just now";
+  else if (diffMin < 60) rel = `${diffMin}m ago`;
+  else rel = `${Math.round(diffMin/60)}h ago`;
+  return `Synced ${rel}`;
+}
+
+function cleanTeamName(name, code){
+  // defensive: strips a duplicated trailing code (e.g. "Belgium BEL" -> "Belgium")
+  // in case data.json was generated before the scraper fix landed.
+  if (code && name && name.toUpperCase().endsWith(" " + code)){
+    return name.slice(0, name.length - code.length).trim();
+  }
+  return name;
+}
+
+function render(){
+  const q = searchInput.value.trim().toLowerCase();
+  const nation = nationSel.value;
+  const cat = catSel.value;
+  const stage = stageSel.value;
+
+  let filtered = MATCHES.filter(m=>{
+    if (activeDay && m.date !== activeDay) return false;
+    if (cat && m.cat !== cat) return false;
+    if (nation && m.codeA !== nation && m.codeB !== nation) return false;
+    if (stage === 'pool' && m.isFinal) return false;
+    if (stage === 'final' && !m.isFinal) return false;
+    if (q){
+      const hay = (m.teamA+" "+m.teamB+" "+m.round+" "+CATEGORIES[m.cat].label).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  resultCount.textContent = filtered.length + (filtered.length===1 ? ' match' : ' matches');
+
+  if (filtered.length === 0){
+    main.innerHTML = `<div class="empty-state">No matches found — try widening your filters.</div>`;
+    return;
+  }
+
+  filtered.sort((a,b)=> a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
+
+  const byDay = {};
+  filtered.forEach(m=>{
+    (byDay[m.date] = byDay[m.date] || []).push(m);
+  });
+
+  let html = "";
+  Object.keys(byDay).sort().forEach(d=>{
+    const list = byDay[d];
+    html += `<div class="day-heading">${dayLabel(d)} <span class="count">· ${list.length} ${list.length===1?'match':'matches'}</span></div>`;
+    html += `<div class="match-grid">`;
+    list.forEach(m=>{
+      const nameA = cleanTeamName(m.teamA, m.codeA);
+      const nameB = cleanTeamName(m.teamB, m.codeB);
+      const flagAHtml = m.codeA && NATION_FLAGS[m.codeA] ? `<span class="m-flag">${NATION_FLAGS[m.codeA]}</span>` : "";
+      const flagBHtml = m.codeB && NATION_FLAGS[m.codeB] ? `<span class="m-flag">${NATION_FLAGS[m.codeB]}</span>` : "";
+      let scoreHtml = "";
+      if (m.score){
+        const parts = m.score.split("-");
+        scoreHtml = `<div class="m-score">${parts[0]} – ${parts[1]}</div>`;
+      }
+      html += `
+        <div class="match${m.isFinal ? ' final-series' : ''}${m.score ? ' played' : ''}">
+          <div>
+            <div class="m-time">${m.time}</div>
+            <div class="m-field">${m.field}</div>
+          </div>
+          <div class="m-teams">
+            <div class="m-team">${flagAHtml}${nameA}</div>
+            ${scoreHtml || `<div class="m-vs">vs</div>`}
+            <div class="m-team">${flagBHtml}${nameB}</div>
+          </div>
+          <div class="m-meta">
+            <span class="m-round">${m.round}</span>
+            <span class="m-cat">${CATEGORIES[m.cat].label}</span>
+            <div class="m-links-row">
+              <a class="m-link" href="${matchStatsUrl(m)}" target="_blank" rel="noopener">Match stats →</a>
+              ${m.video ? `<a class="m-video" href="${matchVideoUrl(m)}" target="_blank" rel="noopener" title="Broadcast available">${CAMERA_ICON}</a>` : ""}
+            </div>
+          </div>
+        </div>`;
+    });
+    html += `</div>`;
+  });
+
+  main.innerHTML = html;
+}
+
+searchInput.addEventListener('input', render);
+nationSel.addEventListener('change', render);
+catSel.addEventListener('change', render);
+stageSel.addEventListener('change', render);
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  searchInput.value=""; nationSel.value=""; catSel.value=""; stageSel.value="";
+  activeDay=""; renderDayChips(); render();
+});
+
+/* ---------------- Load live data ---------------- */
+async function loadData(){
+  try {
+    const res = await fetch('./data.json', {cache:"no-store"});
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const payload = await res.json();
+    MATCHES = payload.matches || [];
+    GENERATED_AT = payload.generated_at || null;
+  } catch (err){
+    console.warn("Could not load live data.json, app will show no matches:", err);
+    main.innerHTML = `<div class="empty-state">Couldn't load fixture data. Check your connection and reload.</div>`;
+    MATCHES = [];
+  }
+
+  days = [...new Set(MATCHES.map(m=>m.date))].sort();
+  document.getElementById('statMatches').textContent = MATCHES.length;
+  if (syncStatus) syncStatus.textContent = formatSyncTime(GENERATED_AT);
+  renderDayChips();
+  render();
+}
+
+loadData();
+setInterval(loadData, 5 * 60 * 1000); // pick up new scrapes without needing a manual reload
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch((err) => {
+      console.warn("Service worker registration failed:", err);
+    });
+  });
+}
+</script>
+</body>
+</html>
