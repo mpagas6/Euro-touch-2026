@@ -221,6 +221,13 @@
     border:1px solid var(--line); border-radius:4px; padding:1px 5px;
   }
   .m-vs{ color:var(--amber-dim); font-family:'IBM Plex Mono',monospace; font-size:12px; }
+  .m-score{
+    font-family:'Oswald',sans-serif; font-weight:600; font-size:16px;
+    color:var(--pitch); background:rgba(15,61,46,0.08);
+    padding:2px 9px; border-radius:5px; letter-spacing:.02em;
+  }
+  .match.played{ border-left-color:var(--pitch); }
+  .match.played.final-series{ border-left-color:var(--gold); }
 
   .m-meta{ text-align:right; }
   .m-round{
@@ -279,6 +286,7 @@
     <div class="hero-stat"><b>16</b><span>Nations</span></div>
     <div class="hero-stat"><b>5</b><span>Days</span></div>
   </div>
+  <div id="syncStatus" style="margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber);opacity:0.85;"></div>
 </header>
 
 <div class="controls-wrap">
@@ -345,412 +353,14 @@ const NATION_NAMES = {
   PRT:"Portugal", SCO:"Scotland", ESP:"Spain", CHE:"Switzerland", WAL:"Wales"
 };
 
-/* ---------------- Match data ----------------
-   tuple: [cat, date, time, field, teamA, codeA, teamB, codeB, round, id, isFinal] */
-const RAW = [
-// ===== MEN'S OPEN =====
-["mo","2026-07-22","08:30","Field 4","England","ENG","Wales","WAL","Round 1",10160,0],
-["mo","2026-07-22","08:30","Field 3","France","FRA","Spain","ESP","Round 1",10161,0],
-["mo","2026-07-22","09:25","Field 4","Ireland","IRL","Scotland","SCO","Round 1",10162,0],
-["mo","2026-07-22","11:15","Field 2","Spain","ESP","England","ENG","Round 2",10163,0],
-["mo","2026-07-22","12:10","Field 4","Wales","WAL","Scotland","SCO","Round 2",10164,0],
-["mo","2026-07-22","13:05","Field 4","Ireland","IRL","France","FRA","Round 2",10165,0],
-["mo","2026-07-22","15:50","Field 2","France","FRA","Wales","WAL","Round 3",10168,0],
-["mo","2026-07-22","15:50","Field 1","England","ENG","Scotland","SCO","Round 3",10166,0],
-["mo","2026-07-22","15:50","Field 9","Spain","ESP","Ireland","IRL","Round 3",10167,0],
-["mo","2026-07-23","11:15","Field 3","France","FRA","Scotland","SCO","Round 4",10170,0],
-["mo","2026-07-23","11:15","Field 2","Ireland","IRL","England","ENG","Round 4",10169,0],
-["mo","2026-07-23","12:10","Field 9","Wales","WAL","Spain","ESP","Round 4",10171,0],
-["mo","2026-07-23","14:55","Field 1","Scotland","SCO","Spain","ESP","Round 5",10174,0],
-["mo","2026-07-23","14:55","Field 4","England","ENG","France","FRA","Round 5",10172,0],
-["mo","2026-07-23","15:50","Field 5","Ireland","IRL","Wales","WAL","Round 5",10173,0],
-["mo","2026-07-23","17:40","Field 3","Spain","ESP","France","FRA","Round 6",10176,0],
-["mo","2026-07-23","18:35","Field 9","Scotland","SCO","Ireland","IRL","Round 6",10177,0],
-["mo","2026-07-23","18:35","Field 7","Wales","WAL","England","ENG","Round 6",10175,0],
-["mo","2026-07-24","09:25","Field 2","Scotland","SCO","Wales","WAL","Round 7",10179,0],
-["mo","2026-07-24","09:25","Field 4","England","ENG","Spain","ESP","Round 7",10178,0],
-["mo","2026-07-24","09:25","Field 6","France","FRA","Ireland","IRL","Round 7",10180,0],
-["mo","2026-07-24","12:10","Field 3","Wales","WAL","France","FRA","Round 8",10183,0],
-["mo","2026-07-24","12:10","Field 4","Scotland","SCO","England","ENG","Round 8",10181,0],
-["mo","2026-07-24","13:10","Field 9","Ireland","IRL","Spain","ESP","Round 8",10182,0],
-["mo","2026-07-24","16:00","Field 5","England","ENG","Ireland","IRL","Round 9",10184,0],
-["mo","2026-07-24","17:00","Field 3","Spain","ESP","Wales","WAL","Round 9",10186,0],
-["mo","2026-07-24","17:00","Field 2","Scotland","SCO","France","FRA","Round 9",10185,0],
-["mo","2026-07-25","10:30","Field 7","Spain","ESP","Scotland","SCO","Round 10",10189,0],
-["mo","2026-07-25","10:30","Field 8","Wales","WAL","Ireland","IRL","Round 10",10188,0],
-["mo","2026-07-25","10:30","Field 9","France","FRA","England","ENG","Round 10",10187,0],
-["mo","2026-07-25","13:30","Field 6","5th","","6th","","5th/6th Playoff",10192,1],
-["mo","2026-07-25","13:30","Field 4","3rd","","4th","","Bronze Medal",10191,1],
-["mo","2026-07-25","17:30","Field 2","1st","","2nd","","Gold Medal",10190,1],
-
-// ===== WOMEN'S OPEN =====
-["wo","2026-07-21","19:30","Darragon Stadium","France","FRA","Ireland","IRL","Round 1",10198,0],
-["wo","2026-07-22","08:30","Field 1","England","ENG","Scotland","SCO","Round 1",10196,0],
-["wo","2026-07-22","11:15","Field 1","EuroSelect WO","EUR","France","FRA","Round 2",10194,0],
-["wo","2026-07-22","12:10","Field 3","Ireland","IRL","Scotland","SCO","Round 2",10195,0],
-["wo","2026-07-22","14:55","Field 6","EuroSelect WO","EUR","England","ENG","Round 3",10199,0],
-["wo","2026-07-22","14:55","Field 3","France","FRA","Scotland","SCO","Round 3",10200,0],
-["wo","2026-07-23","10:20","Field 5","Ireland","IRL","England","ENG","Round 4",10202,0],
-["wo","2026-07-23","11:15","Field 1","EuroSelect WO","EUR","Scotland","SCO","Round 4",10203,0],
-["wo","2026-07-23","14:55","Field 9","England","ENG","France","FRA","Round 5",10205,0],
-["wo","2026-07-23","15:50","Field 2","Ireland","IRL","EuroSelect WO","EUR","Round 5",10207,0],
-["wo","2026-07-23","18:35","Field 3","France","FRA","EuroSelect WO","EUR","Round 6",10209,0],
-["wo","2026-07-23","18:35","Field 4","Scotland","SCO","Ireland","IRL","Round 6",10210,0],
-["wo","2026-07-24","11:15","Field 1","Ireland","IRL","France","FRA","Round 7",10213,0],
-["wo","2026-07-24","11:15","Field 7","England","ENG","EuroSelect WO","EUR","Round 7",10211,0],
-["wo","2026-07-24","14:10","Field 1","Scotland","SCO","England","ENG","Round 8",10214,0],
-["wo","2026-07-24","15:05","Field 9","EuroSelect WO","EUR","Ireland","IRL","Round 8",10215,0],
-["wo","2026-07-24","18:00","Field 9","England","ENG","Ireland","IRL","Round 9",10217,0],
-["wo","2026-07-24","18:00","Field 7","Scotland","SCO","France","FRA","Round 9",10218,0],
-["wo","2026-07-25","09:30","Field 4","France","FRA","England","ENG","Round 10",10220,0],
-["wo","2026-07-25","09:30","Field 5","Scotland","SCO","EuroSelect WO","EUR","Round 10",10222,0],
-["wo","2026-07-25","12:30","Field 7","3rd","","4th","","Bronze Medal",10228,1],
-["wo","2026-07-25","16:30","Field 2","1st","","2nd","","Gold Medal",10227,1],
-
-// ===== MIXED OPEN =====
-["xo","2026-07-22","09:25","Field 3","Belgium","BEL","Switzerland","CHE","Round 1",10413,0],
-["xo","2026-07-22","09:25","Field 8","France","FRA","Germany","DEU","Round 1",10426,0],
-["xo","2026-07-22","10:20","Field 4","Cayman Islands","CYM","Wales","WAL","Round 1",10424,0],
-["xo","2026-07-22","10:20","Field 3","Ireland","IRL","Netherlands","NLD","Round 1",10414,0],
-["xo","2026-07-22","10:20","Field 7","Scotland","SCO","Jersey","JEY","Round 1",10415,0],
-["xo","2026-07-22","10:20","Field 1","Italy","ITA","Portugal","PRT","Round 1",10425,0],
-["xo","2026-07-22","13:05","Field 1","Wales","WAL","Germany","DEU","Round 2",10428,0],
-["xo","2026-07-22","13:05","Field 3","Cayman Islands","CYM","Portugal","PRT","Round 2",10427,0],
-["xo","2026-07-22","13:05","Field 5","Ireland","IRL","Scotland","SCO","Round 2",10419,0],
-["xo","2026-07-22","13:05","Field 2","England","ENG","Switzerland","CHE","Round 2",10416,0],
-["xo","2026-07-22","14:00","Field 3","Belgium","BEL","Jersey","JEY","Round 2",10418,0],
-["xo","2026-07-22","14:00","Field 4","Italy","ITA","France","FRA","Round 2",10429,0],
-["xo","2026-07-22","15:50","Field 3","England","ENG","Netherlands","NLD","Round 3",10420,0],
-["xo","2026-07-22","16:45","Field 5","Switzerland","CHE","Jersey","JEY","Round 3",10421,0],
-["xo","2026-07-22","16:45","Field 8","Belgium","BEL","Ireland","IRL","Round 3",10423,0],
-["xo","2026-07-22","16:45","Field 4","Cayman Islands","CYM","Germany","DEU","Round 3",10430,0],
-["xo","2026-07-22","17:40","Field 7","Wales","WAL","Italy","ITA","Round 3",10432,0],
-["xo","2026-07-22","17:40","Field 3","Portugal","PRT","France","FRA","Round 3",10431,0],
-["xo","2026-07-22","18:35","Field 8","Netherlands","NLD","Scotland","SCO","Round 4",10434,0],
-["xo","2026-07-23","09:25","Field 1","Cayman Islands","CYM","France","FRA","Round 4",10445,0],
-["xo","2026-07-23","09:25","Field 2","England","ENG","Jersey","JEY","Round 4",10433,0],
-["xo","2026-07-23","09:25","Field 8","Switzerland","CHE","Ireland","IRL","Round 4",10435,0],
-["xo","2026-07-23","10:20","Field 8","Portugal","PRT","Wales","WAL","Round 4",10447,0],
-["xo","2026-07-23","10:20","Field 7","Germany","DEU","Italy","ITA","Round 4",10446,0],
-["xo","2026-07-23","11:15","Field 5","Netherlands","NLD","Belgium","BEL","Round 5",10439,0],
-["xo","2026-07-23","12:10","Field 6","Jersey","JEY","Ireland","IRL","Round 5",10438,0],
-["xo","2026-07-23","12:10","Field 1","England","ENG","Scotland","SCO","Round 5",10437,0],
-["xo","2026-07-23","13:05","Field 2","Cayman Islands","CYM","Italy","ITA","Round 5",10448,0],
-["xo","2026-07-23","13:05","Field 6","Germany","DEU","Portugal","PRT","Round 5",10450,0],
-["xo","2026-07-23","13:05","Field 5","France","FRA","Wales","WAL","Round 5",10449,0],
-["xo","2026-07-23","14:00","Field 9","Netherlands","NLD","Switzerland","CHE","Round 6",10444,0],
-["xo","2026-07-23","14:55","Field 2","Scotland","SCO","Belgium","BEL","Round 6",10442,0],
-["xo","2026-07-23","14:55","Field 3","England","ENG","Ireland","IRL","Round 6",10441,0],
-["xo","2026-07-23","17:40","Field 7","Scotland","SCO","Switzerland","CHE","Round 7",10453,0],
-["xo","2026-07-23","17:40","Field 2","Jersey","JEY","Netherlands","NLD","Round 7",10454,0],
-["xo","2026-07-24","08:30","Field 9","England","ENG","Belgium","BEL","Round 7",10451,0],
-["xo","2026-07-24","11:15","Field 4","5th Pool A","","6th Pool B","","Placing Round 8",10465,0],
-["xo","2026-07-24","11:15","Field 2","6th Pool A","","5th Pool B","","Placing Round 8",10466,0],
-["xo","2026-07-24","14:10","Field 7","6th Pool A","","6th Pool B","","Placing Round 9",10467,0],
-["xo","2026-07-24","14:10","Field 8","7th Pool A","","5th Pool B","","Placing Round 9",10468,0],
-["xo","2026-07-24","17:00","Field 7","5th Pool A","","7th Pool A","","Placing Round 10",10473,0],
-["xo","2026-07-24","17:00","Field 6","5th Pool B","","6th Pool B","","Placing Round 10",10474,0],
-["xo","2026-07-25","08:30","Field 4","5th Pool A","","5th Pool B","","Placing Round 11",10471,0],
-["xo","2026-07-25","08:30","Field 3","6th Pool A","","7th Pool A","","Placing Round 11",10472,0],
-["xo","2026-07-25","11:30","Field 3","5th Pool A","","6th Pool A","","Placing Round 12",10469,0],
-["xo","2026-07-25","11:30","Field 9","7th Pool A","","6th Pool B","","Placing Round 12",10470,0],
-["xo","2026-07-24","12:10","Field 1","3rd Pool A","","2nd Pool B","","Quarter Final 3",10477,1],
-["xo","2026-07-24","12:10","Field 2","4th Pool A","","1st Pool B","","Quarter Final 4",10478,1],
-["xo","2026-07-24","13:10","Field 2","2nd Pool A","","3rd Pool B","","Quarter Final 2",10476,1],
-["xo","2026-07-24","13:10","Field 1","1st Pool A","","4th Pool B","","Quarter Final 1",10475,1],
-["xo","2026-07-24","17:00","Field 9","Loser QF1","","Loser QF3","","5th/8th Playoff 1",10479,1],
-["xo","2026-07-24","17:00","Field 8","Loser QF2","","Loser QF4","","5th/8th Playoff 2",10480,1],
-["xo","2026-07-25","09:30","Field 3","Loser 5/8 PO1","","Loser 5/8 PO2","","7th/8th Playoff",10483,1],
-["xo","2026-07-25","10:30","Field 2","Winner QF2","","Winner QF4","","Semi Final 2",10482,1],
-["xo","2026-07-25","10:30","Field 1","Winner QF1","","Winner QF3","","Semi Final 1",10481,1],
-["xo","2026-07-25","11:30","Field 7","Winner 5/8 PO1","","Winner 5/8 PO2","","5th/6th Playoff",10484,1],
-["xo","2026-07-25","13:30","Field 3","Loser SF1","","Loser SF2","","Bronze Medal",10485,1],
-["xo","2026-07-25","15:30","Field 2","Winner SF1","","Winner SF2","","Gold Medal",10486,1],
-
-// ===== WOMEN'S 27 =====
-["w27","2026-07-21","20:20","Darragon Stadium","France","FRA","Belgium","BEL","Round 1",10238,0],
-["w27","2026-07-22","08:30","Field 6","Scotland","SCO","Spain","ESP","Round 1",10240,0],
-["w27","2026-07-22","09:25","Field 6","Portugal","PRT","England","ENG","Round 1",10239,0],
-["w27","2026-07-22","12:10","Field 5","England","ENG","France","FRA","Round 2",10234,0],
-["w27","2026-07-22","12:10","Field 6","Belgium","BEL","Scotland","SCO","Round 2",10232,0],
-["w27","2026-07-22","12:10","Field 1","Spain","ESP","Portugal","PRT","Round 2",10233,0],
-["w27","2026-07-22","15:50","Field 4","Spain","ESP","England","ENG","Round 3",10237,0],
-["w27","2026-07-22","16:45","Field 2","Belgium","BEL","Portugal","PRT","Round 3",10235,0],
-["w27","2026-07-22","16:45","Field 6","Scotland","SCO","France","FRA","Round 3",10236,0],
-["w27","2026-07-23","08:30","Field 1","Portugal","PRT","France","FRA","Round 4",10231,0],
-["w27","2026-07-23","09:25","Field 3","Spain","ESP","Belgium","BEL","Round 4",10229,0],
-["w27","2026-07-23","09:25","Field 4","Scotland","SCO","England","ENG","Round 4",10230,0],
-["w27","2026-07-23","12:10","Field 2","Spain","ESP","France","FRA","Round 5",10242,0],
-["w27","2026-07-23","12:10","Field 4","England","ENG","Belgium","BEL","Round 5",10241,0],
-["w27","2026-07-23","13:05","Field 3","Scotland","SCO","Portugal","PRT","Round 5",10243,0],
-["w27","2026-07-23","15:50","Field 7","Belgium","BEL","France","FRA","Round 6",10253,0],
-["w27","2026-07-23","15:50","Field 8","England","ENG","Portugal","PRT","Round 6",10254,0],
-["w27","2026-07-23","16:45","Field 7","Spain","ESP","Scotland","SCO","Round 6",10255,0],
-["w27","2026-07-24","08:30","Field 1","Scotland","SCO","Belgium","BEL","Round 7",10247,0],
-["w27","2026-07-24","08:30","Field 3","France","FRA","England","ENG","Round 7",10249,0],
-["w27","2026-07-24","09:25","Field 3","Portugal","PRT","Spain","ESP","Round 7",10248,0],
-["w27","2026-07-24","11:15","Field 6","France","FRA","Scotland","SCO","Round 8",10251,0],
-["w27","2026-07-24","12:10","Field 8","England","ENG","Spain","ESP","Round 8",10252,0],
-["w27","2026-07-24","12:10","Field 10","Portugal","PRT","Belgium","BEL","Round 8",10250,0],
-["w27","2026-07-24","15:05","Field 2","Belgium","BEL","England","ENG","Round 9",10256,0],
-["w27","2026-07-24","16:00","Field 7","Portugal","PRT","Scotland","SCO","Round 9",10258,0],
-["w27","2026-07-24","16:00","Field 6","France","FRA","Spain","ESP","Round 9",10257,0],
-["w27","2026-07-25","09:30","Field 7","France","FRA","Portugal","PRT","Round 10",10246,0],
-["w27","2026-07-25","09:30","Field 9","Belgium","BEL","Spain","ESP","Round 10",10244,0],
-["w27","2026-07-25","09:30","Field 8","England","ENG","Scotland","SCO","Round 10",10245,0],
-["w27","2026-07-25","14:30","Field 2","1st","","2nd","","Gold Medal",10259,1],
-
-// ===== MEN'S 30/35 =====
-["m3035","2026-07-22","10:20","Field 9","England","ENG","England M35","ENG","Round 1",10495,0],
-["m3035","2026-07-22","10:20","Field 2","Ireland","IRL","Scotland","SCO","Round 1",10497,0],
-["m3035","2026-07-22","10:20","Field 8","France","FRA","Wales","WAL","Round 1",10496,0],
-["m3035","2026-07-22","11:15","Field 7","Italy","ITA","Portugal","PRT","Round 1",10498,0],
-["m3035","2026-07-22","11:15","Field 6","Belgium","BEL","Wales M35","WAL","Round 1",10494,0],
-["m3035","2026-07-22","14:00","Field 9","Wales M35","WAL","Wales","WAL","Round 2",10500,0],
-["m3035","2026-07-22","14:55","Field 4","France","FRA","Portugal","PRT","Round 2",10502,0],
-["m3035","2026-07-22","14:55","Field 12","England","ENG","Scotland","SCO","Round 2",10501,0],
-["m3035","2026-07-22","14:55","Field 13","Belgium","BEL","England M35","ENG","Round 2",10499,0],
-["m3035","2026-07-22","14:55","Field 10","Ireland","IRL","Italy","ITA","Round 2",10503,0],
-["m3035","2026-07-22","17:40","Field 2","England","ENG","Italy","ITA","Round 3",10507,0],
-["m3035","2026-07-22","17:40","Field 9","Wales M35","WAL","Portugal","PRT","Round 3",10506,0],
-["m3035","2026-07-22","17:40","Field 11","Belgium","BEL","Wales","WAL","Round 3",10504,0],
-["m3035","2026-07-22","18:35","Field 4","England M35","ENG","Scotland","SCO","Round 3",10505,0],
-["m3035","2026-07-22","18:35","Field 6","France","FRA","Ireland","IRL","Round 3",10508,0],
-["m3035","2026-07-23","08:30","Field 7","Wales","WAL","Portugal","PRT","Round 4",10510,0],
-["m3035","2026-07-23","08:30","Field 4","England M35","ENG","Italy","ITA","Round 4",10511,0],
-["m3035","2026-07-23","08:30","Field 6","Belgium","BEL","Scotland","SCO","Round 4",10509,0],
-["m3035","2026-07-23","09:25","Field 5","England","ENG","France","FRA","Round 4",10513,0],
-["m3035","2026-07-23","09:25","Field 11","Wales M35","WAL","Ireland","IRL","Round 4",10512,0],
-["m3035","2026-07-23","11:15","Field 8","Belgium","BEL","Portugal","PRT","Round 5",10514,0],
-["m3035","2026-07-23","12:10","Field 11","Wales M35","WAL","England","ENG","Round 5",10518,0],
-["m3035","2026-07-23","12:10","Field 7","England M35","ENG","France","FRA","Round 5",10517,0],
-["m3035","2026-07-23","13:05","Field 13","Scotland","SCO","Italy","ITA","Round 5",10515,0],
-["m3035","2026-07-23","13:05","Field 7","Wales","WAL","Ireland","IRL","Round 5",10516,0],
-["m3035","2026-07-23","14:55","Field 8","England M35","ENG","Wales M35","WAL","Round 6",10523,0],
-["m3035","2026-07-23","15:50","Field 6","Portugal","PRT","Ireland","IRL","Round 6",10520,0],
-["m3035","2026-07-23","15:50","Field 9","Wales","WAL","England","ENG","Round 6",10522,0],
-["m3035","2026-07-23","16:45","Field 2","Scotland","SCO","France","FRA","Round 6",10521,0],
-["m3035","2026-07-23","16:45","Field 8","Belgium","BEL","Italy","ITA","Round 6",10519,0],
-["m3035","2026-07-24","10:20","Field 2","Belgium","BEL","Ireland","IRL","Round 7",10524,0],
-["m3035","2026-07-24","10:20","Field 6","Italy","ITA","France","FRA","Round 7",10525,0],
-["m3035","2026-07-24","10:20","Field 8","Portugal","PRT","England","ENG","Round 7",10526,0],
-["m3035","2026-07-24","11:15","Field 9","Wales","WAL","England M35","ENG","Round 7",10528,0],
-["m3035","2026-07-24","11:15","Field 5","Scotland","SCO","Wales M35","WAL","Round 7",10527,0],
-["m3035","2026-07-24","14:10","Field 3","Scotland","SCO","Wales","WAL","Round 8",10533,0],
-["m3035","2026-07-24","14:10","Field 4","Italy","ITA","Wales M35","WAL","Round 8",10531,0],
-["m3035","2026-07-24","14:10","Field 5","Portugal","PRT","England M35","ENG","Round 8",10532,0],
-["m3035","2026-07-24","15:05","Field 4","Ireland","IRL","England","ENG","Round 8",10530,0],
-["m3035","2026-07-24","15:05","Field 11","Belgium","BEL","France","FRA","Round 8",10529,0],
-["m3035","2026-07-24","18:00","Field 10","Belgium","BEL","England","ENG","Round 9",10534,0],
-["m3035","2026-07-24","18:00","Field 8","Italy","ITA","Wales","WAL","Round 9",10537,0],
-["m3035","2026-07-24","18:00","Field 6","Portugal","PRT","Scotland","SCO","Round 9",10538,0],
-["m3035","2026-07-24","18:00","Field 4","Ireland","IRL","England M35","ENG","Round 9",10536,0],
-["m3035","2026-07-24","18:00","Field 3","France","FRA","Wales M35","WAL","Round 9",10535,0],
-["m3035","2026-07-25","09:30","Field 1","1st","","4th","","M30 Semi Final 1",10488,1],
-["m3035","2026-07-25","09:30","Field 2","2nd","","3rd","","M30 Semi Final 2",10489,1],
-["m3035","2026-07-25","10:30","Field 5","5th","","6th","","M30 5th/6th Playoff",10490,1],
-["m3035","2026-07-25","10:30","Field 6","7th","","8th","","M30 7th/8th Playoff",10491,1],
-["m3035","2026-07-25","12:30","Field 4","Loser SF1","","Loser SF2","","M30 Bronze Medal",10492,1],
-["m3035","2026-07-25","13:30","Field 2","Winner SF1","","Winner SF2","","M30 Gold Medal",10493,1],
-["m3035","2026-07-25","14:30","Field 8","England M35","ENG","Wales M35","WAL","M35 Gold Medal",10487,1],
-
-// ===== MIXED 30 =====
-["x30","2026-07-22","09:25","Field 1","France","FRA","Germany","DEU","Round 1",10265,0],
-["x30","2026-07-22","09:25","Field 9","Netherlands","NLD","England","ENG","Round 1",10264,0],
-["x30","2026-07-22","12:10","Field 7","England","ENG","France","FRA","Round 2",10268,0],
-["x30","2026-07-22","12:10","Field 8","Chile","CHL","Netherlands","NLD","Round 2",10266,0],
-["x30","2026-07-22","14:55","Field 7","Germany","DEU","Chile","CHL","Round 3",10269,0],
-["x30","2026-07-22","15:50","Field 6","Netherlands","NLD","France","FRA","Round 3",10270,0],
-["x30","2026-07-22","18:35","Field 2","England","ENG","Germany","DEU","Round 4",10273,0],
-["x30","2026-07-23","08:30","Field 3","France","FRA","Chile","CHL","Round 4",10272,0],
-["x30","2026-07-23","09:25","Field 6","Germany","DEU","Netherlands","NLD","Round 5",10277,0],
-["x30","2026-07-23","11:15","Field 4","Chile","CHL","England","ENG","Round 5",10275,0],
-["x30","2026-07-23","13:05","Field 4","Germany","DEU","France","FRA","Round 6",10280,0],
-["x30","2026-07-23","14:00","Field 6","England","ENG","Netherlands","NLD","Round 6",10279,0],
-["x30","2026-07-23","16:45","Field 9","France","FRA","England","ENG","Round 7",10283,0],
-["x30","2026-07-23","16:45","Field 4","Netherlands","NLD","Chile","CHL","Round 7",10281,0],
-["x30","2026-07-24","08:30","Field 7","Chile","CHL","Germany","DEU","Round 8",10284,0],
-["x30","2026-07-24","09:25","Field 8","France","FRA","Netherlands","NLD","Round 8",10285,0],
-["x30","2026-07-24","12:10","Field 6","Chile","CHL","France","FRA","Round 9",10287,0],
-["x30","2026-07-24","13:10","Field 7","Germany","DEU","England","ENG","Round 9",10288,0],
-["x30","2026-07-24","16:00","Field 10","Netherlands","NLD","Germany","DEU","Round 10",10292,0],
-["x30","2026-07-24","16:00","Field 8","England","ENG","Chile","CHL","Round 10",10290,0],
-["x30","2026-07-25","08:30","Field 2","4th","","5th","","Semi Final Qualifier",10293,1],
-["x30","2026-07-25","11:30","Field 1","1st","","Winner SF Qualifier","","Semi Final 1",10294,1],
-["x30","2026-07-25","11:30","Field 2","2nd","","3rd","","Semi Final 2",10295,1],
-["x30","2026-07-25","14:30","Field 1","Winner SF1","","Winner SF2","","Gold Medal",10297,1],
-["x30","2026-07-25","14:30","Field 3","Loser SF1","","Loser SF2","","Bronze Medal",10296,1],
-
-// ===== WOMEN'S 35 =====
-["w35","2026-07-22","10:20","Field 11","England","ENG","Ireland","IRL","Round 1",10307,0],
-["w35","2026-07-22","11:15","Field 8","Wales","WAL","France","FRA","Round 1",10308,0],
-["w35","2026-07-22","14:00","Field 7","EuroSelect Senior Women","EUR","England","ENG","Round 2",10301,0],
-["w35","2026-07-22","14:55","Field 8","France","FRA","Ireland","IRL","Round 2",10303,0],
-["w35","2026-07-22","17:40","Field 8","England","ENG","Wales","WAL","Round 3",10304,0],
-["w35","2026-07-22","18:35","Field 5","Ireland","IRL","EuroSelect Senior Women","EUR","Round 3",10305,0],
-["w35","2026-07-23","10:20","Field 1","Wales","WAL","Ireland","IRL","Round 4",10300,0],
-["w35","2026-07-23","12:10","Field 8","EuroSelect Senior Women","EUR","France","FRA","Round 4",10299,0],
-["w35","2026-07-23","14:55","Field 6","France","FRA","England","ENG","Round 5",10310,0],
-["w35","2026-07-23","15:50","Field 10","Wales","WAL","EuroSelect Senior Women","EUR","Round 5",10312,0],
-["w35","2026-07-23","18:35","Field 6","Ireland","IRL","England","ENG","Round 6",10322,0],
-["w35","2026-07-23","18:35","Field 5","France","FRA","Wales","WAL","Round 6",10323,0],
-["w35","2026-07-24","10:20","Field 1","England","ENG","EuroSelect Senior Women","EUR","Round 7",10316,0],
-["w35","2026-07-24","10:20","Field 5","Ireland","IRL","France","FRA","Round 7",10318,0],
-["w35","2026-07-24","13:10","Field 12","EuroSelect Senior Women","EUR","Ireland","IRL","Round 8",10320,0],
-["w35","2026-07-24","14:10","Field 6","Wales","WAL","England","ENG","Round 8",10319,0],
-["w35","2026-07-24","17:00","Field 11","France","FRA","EuroSelect Senior Women","EUR","Round 9",10314,0],
-["w35","2026-07-24","18:00","Field 11","Ireland","IRL","Wales","WAL","Round 9",10315,0],
-["w35","2026-07-25","08:30","Field 5","England","ENG","France","FRA","Round 10",10325,0],
-["w35","2026-07-25","08:30","Field 6","EuroSelect Senior Women","EUR","Wales","WAL","Round 10",10327,0],
-["w35","2026-07-25","11:30","Field 4","3rd","","4th","","Bronze Medal",10328,1],
-["w35","2026-07-25","12:30","Field 2","1st","","2nd","","Gold Medal",10329,1],
-
-// ===== MEN'S 40 =====
-["m40","2026-07-22","08:30","Field 5","England","ENG","Wales","WAL","Round 1",10330,0],
-["m40","2026-07-22","08:30","Field 11","Ireland","IRL","Scotland","SCO","Round 1",10332,0],
-["m40","2026-07-22","09:25","Field 10","France","FRA","Spain","ESP","Round 1",10331,0],
-["m40","2026-07-22","09:25","Field 2","Italy","ITA","Portugal","PRT","Round 1",10333,0],
-["m40","2026-07-22","13:05","Field 9","Ireland","IRL","Italy","ITA","Round 2",10337,0],
-["m40","2026-07-22","13:05","Field 11","Spain","ESP","England","ENG","Round 2",10334,0],
-["m40","2026-07-22","14:00","Field 8","Wales","WAL","Scotland","SCO","Round 2",10335,0],
-["m40","2026-07-22","14:55","Field 2","Portugal","PRT","France","FRA","Round 2",10336,0],
-["m40","2026-07-23","10:20","Field 9","Scotland","SCO","England","ENG","Round 3",10338,0],
-["m40","2026-07-23","10:20","Field 12","France","FRA","Ireland","IRL","Round 3",10341,0],
-["m40","2026-07-23","11:15","Field 10","Spain","ESP","Portugal","PRT","Round 3",10339,0],
-["m40","2026-07-23","11:15","Field 6","Wales","WAL","Italy","ITA","Round 3",10340,0],
-["m40","2026-07-23","14:00","Field 4","Wales","WAL","France","FRA","Round 4",10345,0],
-["m40","2026-07-23","14:00","Field 1","Ireland","IRL","Spain","ESP","Round 4",10344,0],
-["m40","2026-07-23","14:00","Field 3","Scotland","SCO","Italy","ITA","Round 4",10343,0],
-["m40","2026-07-23","14:55","Field 5","England","ENG","Portugal","PRT","Round 4",10342,0],
-["m40","2026-07-23","17:40","Field 8","Portugal","PRT","Ireland","IRL","Round 5",10347,0],
-["m40","2026-07-23","17:40","Field 6","France","FRA","Scotland","SCO","Round 5",10348,0],
-["m40","2026-07-23","18:35","Field 8","England","ENG","Italy","ITA","Round 5",10346,0],
-["m40","2026-07-23","18:35","Field 2","Spain","ESP","Wales","WAL","Round 5",10349,0],
-["m40","2026-07-24","09:25","Field 5","Scotland","SCO","Spain","ESP","Round 6",10353,0],
-["m40","2026-07-24","09:25","Field 7","Portugal","PRT","Wales","WAL","Round 6",10352,0],
-["m40","2026-07-24","10:20","Field 12","Italy","ITA","France","FRA","Round 6",10351,0],
-["m40","2026-07-24","10:20","Field 9","Ireland","IRL","England","ENG","Round 6",10350,0],
-["m40","2026-07-24","15:05","Field 13","Italy","ITA","Spain","ESP","Round 7",10356,0],
-["m40","2026-07-24","15:05","Field 6","Portugal","PRT","Scotland","SCO","Round 7",10357,0],
-["m40","2026-07-24","15:05","Field 1","England","ENG","France","FRA","Round 7",10354,0],
-["m40","2026-07-24","15:05","Field 5","Wales","WAL","Ireland","IRL","Round 7",10355,0],
-["m40","2026-07-24","18:00","Field 2","1st","","4th","","Semi Final 1",10358,1],
-["m40","2026-07-24","19:00","Field 2","2nd","","3rd","","Semi Final 2",10359,1],
-["m40","2026-07-24","19:00","Field 9","5th","","8th","","5th/8th Playoff 1",10360,1],
-["m40","2026-07-24","19:00","Field 7","6th","","7th","","5th/8th Playoff 2",10361,1],
-["m40","2026-07-25","09:30","Field 6","Loser 5/8 PO1","","Loser 5/8 PO2","","7th/8th Playoff",10362,1],
-["m40","2026-07-25","11:30","Field 5","Winner 5/8 PO1","","Winner 5/8 PO2","","5th/6th Playoff",10363,1],
-["m40","2026-07-25","12:30","Field 3","Loser SF1","","Loser SF2","","Bronze Medal",10364,1],
-["m40","2026-07-25","13:30","Field 1","Winner SF1","","Winner SF2","","Gold Medal",10365,1],
-
-// ===== WOMEN'S 40 =====
-["w40","2026-07-22","10:20","Field 5","England","ENG","Eurostars","EUR","Round 1",10366,0],
-["w40","2026-07-22","10:20","Field 6","Scotland","SCO","England W45","ENG","Round 1",10367,0],
-["w40","2026-07-22","14:00","Field 5","England W45","ENG","England","ENG","Round 2",10368,0],
-["w40","2026-07-22","14:00","Field 1","Eurostars","EUR","Scotland","SCO","Round 2",10369,0],
-["w40","2026-07-23","13:05","Field 1","England","ENG","Scotland","SCO","Round 3",10370,0],
-["w40","2026-07-23","14:00","Field 8","England W45","ENG","Eurostars","EUR","Round 3",10371,0],
-["w40","2026-07-23","16:45","Field 5","England W45","ENG","Scotland","SCO","Round 4",10373,0],
-["w40","2026-07-23","17:40","Field 4","Eurostars","EUR","England","ENG","Round 4",10372,0],
-["w40","2026-07-24","10:20","Field 13","England","ENG","England W45","ENG","Round 5",10374,0],
-["w40","2026-07-24","11:15","Field 3","Eurostars","EUR","Scotland","SCO","Round 5",10375,0],
-["w40","2026-07-24","15:05","Field 8","Scotland","SCO","England","ENG","Round 6",10376,0],
-["w40","2026-07-24","16:00","Field 9","Eurostars","EUR","England W45","ENG","Round 6",10377,0],
-["w40","2026-07-25","11:30","Field 6","3rd","","4th","","Bronze Medal",10378,1],
-["w40","2026-07-25","12:30","Field 1","1st","","2nd","","Gold Medal",10379,1],
-
-// ===== MEN'S 45 =====
-["m45","2026-07-22","11:15","Field 10","Switzerland","CHE","Wales","WAL","Round 1",10409,0],
-["m45","2026-07-22","11:15","Field 5","England","ENG","France","FRA","Round 1",10407,0],
-["m45","2026-07-22","14:00","Field 13","France","FRA","Spain","ESP","Round 2",10385,0],
-["m45","2026-07-22","14:55","Field 1","England","ENG","Wales","WAL","Round 2",10383,0],
-["m45","2026-07-22","17:40","Field 5","Wales","WAL","Spain","ESP","Round 3",10387,0],
-["m45","2026-07-22","18:35","Field 3","England","ENG","Switzerland","CHE","Round 3",10386,0],
-["m45","2026-07-23","10:20","Field 3","England","ENG","Spain","ESP","Round 4",10389,0],
-["m45","2026-07-23","10:20","Field 2","Switzerland","CHE","France","FRA","Round 4",10390,0],
-["m45","2026-07-23","13:05","Field 12","Switzerland","CHE","Wales","WAL","Round 5",10394,0],
-["m45","2026-07-23","14:00","Field 7","England","ENG","France","FRA","Round 5",10392,0],
-["m45","2026-07-23","15:50","Field 1","Spain","ESP","Switzerland","CHE","Round 6",10397,0],
-["m45","2026-07-23","16:45","Field 11","France","FRA","Wales","WAL","Round 6",10396,0],
-["m45","2026-07-24","08:30","Field 11","England","ENG","Wales","WAL","Round 7",10398,0],
-["m45","2026-07-24","09:25","Field 1","France","FRA","Spain","ESP","Round 7",10400,0],
-["m45","2026-07-24","13:10","Field 8","England","ENG","Switzerland","CHE","Round 8",10401,0],
-["m45","2026-07-24","13:10","Field 5","Wales","WAL","Spain","ESP","Round 8",10402,0],
-["m45","2026-07-24","17:00","Field 12","Switzerland","CHE","France","FRA","Round 9",10405,0],
-["m45","2026-07-24","18:00","Field 5","England","ENG","Spain","ESP","Round 9",10404,0],
-["m45","2026-07-25","08:30","Field 7","Spain","ESP","Switzerland","CHE","Round 10",10382,0],
-["m45","2026-07-25","08:30","Field 8","France","FRA","Wales","WAL","Round 10",10381,0],
-["m45","2026-07-25","12:30","Field 6","3rd","","4th","","Bronze Medal",10410,1],
-["m45","2026-07-25","13:30","Field 8","1st","","2nd","","Gold Medal",10411,1],
-
-// ===== MEN'S 50/55 =====
-["m5055","2026-07-22","08:30","Field 9","Ireland","IRL","Scotland","SCO","Round 1",10541,0],
-["m5055","2026-07-22","08:30","Field 7","Jersey","JEY","Portugal M55","PRT","Round 1",10540,0],
-["m5055","2026-07-22","08:30","Field 8","Portugal","PRT","Wales","WAL","Round 1",10547,0],
-["m5055","2026-07-22","09:25","Field 5","France","FRA","England M55","ENG","Round 1",10546,0],
-["m5055","2026-07-22","09:25","Field 7","England","ENG","Wales M55","WAL","Round 1",10539,0],
-["m5055","2026-07-22","12:10","Field 2","Chile","CHL","England M55","ENG","Round 2",10548,0],
-["m5055","2026-07-22","14:00","Field 6","England","ENG","Portugal M55","PRT","Round 2",10542,0],
-["m5055","2026-07-22","13:05","Field 6","Wales M55","WAL","Scotland","SCO","Round 2",10543,0],
-["m5055","2026-07-22","13:05","Field 8","France","FRA","Portugal","PRT","Round 2",10550,0],
-["m5055","2026-07-22","14:00","Field 2","Jersey","JEY","Ireland","IRL","Round 2",10544,0],
-["m5055","2026-07-22","16:45","Field 5","Chile","CHL","Wales","WAL","Round 3",10557,0],
-["m5055","2026-07-22","16:45","Field 8","England","ENG","Scotland","SCO","Round 3",10551,0],
-["m5055","2026-07-22","17:40","Field 9","Wales M55","WAL","Jersey","JEY","Round 3",10553,0],
-["m5055","2026-07-22","17:40","Field 7","Portugal M55","PRT","Ireland","IRL","Round 3",10552,0],
-["m5055","2026-07-23","08:30","Field 3","England M55","ENG","Portugal","PRT","Round 3",10558,0],
-["m5055","2026-07-23","08:30","Field 8","Wales","WAL","France","FRA","Round 4",10561,0],
-["m5055","2026-07-23","08:30","Field 5","Portugal M55","PRT","Wales M55","WAL","Round 4",10556,0],
-["m5055","2026-07-23","09:25","Field 9","Scotland","SCO","Jersey","JEY","Round 4",10555,0],
-["m5055","2026-07-23","08:30","Field 7","England","ENG","Ireland","IRL","Round 4",10554,0],
-["m5055","2026-07-23","12:10","Field 7","Chile","CHL","Portugal","PRT","Round 4",10560,0],
-["m5055","2026-07-23","13:05","Field 8","England","ENG","Jersey","JEY","Round 5",10563,0],
-["m5055","2026-07-23","14:00","Field 9","Wales","WAL","England M55","ENG","Round 5",10568,0],
-["m5055","2026-07-23","14:55","Field 1","Scotland","SCO","Portugal M55","PRT","Round 5",10565,0],
-["m5055","2026-07-23","14:55","Field 5","Chile","CHL","France","FRA","Round 5",10566,0],
-["m5055","2026-07-23","15:50","Field 7","Ireland","IRL","Wales M55","WAL","Round 5",10564,0],
-["m5055","2026-07-24","08:30","Field 4","Portugal M55","PRT","England M55","ENG","M55 Round 2",10595,0],
-["m5055","2026-07-24","11:15","Field 8","Wales M55","WAL","England M55","ENG","M55 Round 3",10596,0],
-["m5055","2026-07-24","14:10","Field 2","Wales M55","WAL","Portugal M55","PRT","M55 Round 4",10597,0],
-["m5055","2026-07-24","17:00","Field 5","England M55","ENG","Portugal M55","PRT","M55 Round 5",10598,0],
-["m5055","2026-07-25","08:30","Field 3","England M55","ENG","Wales M55","WAL","M55 Round 6",10599,0],
-["m5055","2026-07-25","11:30","Field 8","1st","","2nd","","M55 Gold Medal",10581,1],
-["m5055","2026-07-24","16:00","Field 4","1st Pool A","","4th Pool B","","M50 Quarter Final 1",10569,1],
-["m5055","2026-07-24","16:00","Field 2","3rd Pool A","","2nd Pool B","","M50 Quarter Final 3",10571,1],
-["m5055","2026-07-24","16:00","Field 3","4th Pool A","","1st Pool B","","M50 Quarter Final 4",10572,1],
-["m5055","2026-07-24","16:00","Field 1","2nd Pool A","","3rd Pool B","","M50 Quarter Final 2",10570,1],
-["m5055","2026-07-24","19:00","Field 5","Loser QF2","","Loser QF4","","M50 5th/8th Playoff 2",10576,1],
-["m5055","2026-07-24","19:00","Field 3","Loser QF1","","Loser QF3","","M50 5th/8th Playoff 1",10575,1],
-["m5055","2026-07-24","19:00","Field 1","Winner QF1","","Winner QF3","","M50 Semi Final 1",10573,1],
-["m5055","2026-07-24","19:00","Field 8","Winner QF2","","Winner QF4","","M50 Semi Final 2",10574,1],
-["m5055","2026-07-25","08:30","Field 9","Loser 5/8 PO1","","Loser 5/8 PO2","","M50 7th/8th Playoff",10578,1],
-["m5055","2026-07-25","10:30","Field 4","Winner 5/8 PO1","","Winner 5/8 PO2","","M50 5th/6th Playoff",10577,1],
-["m5055","2026-07-25","10:30","Field 3","Loser SF1","","Loser SF2","","M50 Bronze Medal",10579,1],
-["m5055","2026-07-25","12:30","Field 8","Winner SF1","","Winner SF2","","M50 Gold Medal",10580,1]
-];
-
-const MATCHES = RAW.map(r => ({
-  cat:r[0], date:r[1], time:r[2], field:r[3],
-  teamA:r[4], codeA:r[5], teamB:r[6], codeB:r[7],
-  round:r[8], id:r[9], isFinal:r[10]
-}));
-
-/* Matches with a broadcast livestream/video available on the official site.
-   This list is as-published; more get added as the broadcast schedule fills in. */
-const VIDEO_IDS = new Set([
-  // Men's Open
-  10163,10168,10166,10169,10174,10179,10185,10188,10190,
-  // Women's Open
-  10198,10196,10194,10203,10207,10213,10214,10227,
-  // Mixed Open
-  10426,10425,10428,10416,10423,10445,10433,10435,10447,10437,10448,10442,10454,10466,10468,10477,10478,10476,10475,10486,
-  // Men's 50/55
-  10547,10548,10550,10544,10551,10563,10568,10565,10596,10597,10581,10571,10570,10580
-]);
+let MATCHES = [];
+let GENERATED_AT = null;
+let days = [];
+let activeDay = "";
 
 const CAMERA_ICON = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>';
 
-/* ---------------- Build controls ---------------- */
+/* ---------------- Build static controls ---------------- */
 const nationSel = document.getElementById('nationSel');
 NATIONS.slice().sort((a,b)=>NATION_NAMES[a].localeCompare(NATION_NAMES[b])).forEach(code=>{
   const o = document.createElement('option');
@@ -765,13 +375,11 @@ Object.entries(CATEGORIES).forEach(([key,c])=>{
   catSel.appendChild(o);
 });
 
-const days = [...new Set(MATCHES.map(m=>m.date))].sort();
 const dayChips = document.getElementById('dayChips');
 function dayLabel(d){
   const dt = new Date(d+"T12:00:00");
   return dt.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
 }
-let activeDay = "";
 function renderDayChips(){
   dayChips.innerHTML = "";
   const allChip = document.createElement('div');
@@ -787,21 +395,32 @@ function renderDayChips(){
     dayChips.appendChild(c);
   });
 }
-renderDayChips();
-
-document.getElementById('statMatches').textContent = MATCHES.length;
 
 /* ---------------- Filtering & rendering ---------------- */
 const searchInput = document.getElementById('search');
 const stageSel = document.getElementById('stageSel');
 const main = document.getElementById('main');
 const resultCount = document.getElementById('resultCount');
+const syncStatus = document.getElementById('syncStatus');
 
 function matchStatsUrl(m){
   return `https://www.internationaltouch.org/events/euros/2026/${CATEGORIES[m.cat].slug}/match:${m.id}/`;
 }
 function matchVideoUrl(m){
   return `https://www.internationaltouch.org/events/euros/2026/${CATEGORIES[m.cat].slug}/match:${m.id}/video/`;
+}
+
+function formatSyncTime(iso){
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (isNaN(d)) return "";
+  const now = new Date();
+  const diffMin = Math.round((now - d) / 60000);
+  let rel;
+  if (diffMin < 1) rel = "just now";
+  else if (diffMin < 60) rel = `${diffMin}m ago`;
+  else rel = `${Math.round(diffMin/60)}h ago`;
+  return `Synced ${rel}`;
 }
 
 function render(){
@@ -845,15 +464,20 @@ function render(){
     list.forEach(m=>{
       const codeAHtml = m.codeA ? `<span class="m-code">${m.codeA}</span>` : "";
       const codeBHtml = m.codeB ? `<span class="m-code">${m.codeB}</span>` : "";
+      let scoreHtml = "";
+      if (m.score){
+        const parts = m.score.split("-");
+        scoreHtml = `<div class="m-score">${parts[0]} – ${parts[1]}</div>`;
+      }
       html += `
-        <div class="match${m.isFinal ? ' final-series' : ''}">
+        <div class="match${m.isFinal ? ' final-series' : ''}${m.score ? ' played' : ''}">
           <div>
             <div class="m-time">${m.time}</div>
             <div class="m-field">${m.field}</div>
           </div>
           <div class="m-teams">
             <div class="m-team">${m.teamA}${codeAHtml}</div>
-            <div class="m-vs">vs</div>
+            ${scoreHtml || `<div class="m-vs">vs</div>`}
             <div class="m-team">${m.teamB}${codeBHtml}</div>
           </div>
           <div class="m-meta">
@@ -861,7 +485,7 @@ function render(){
             <span class="m-cat">${CATEGORIES[m.cat].label}</span>
             <div class="m-links-row">
               <a class="m-link" href="${matchStatsUrl(m)}" target="_blank" rel="noopener">Match stats →</a>
-              ${VIDEO_IDS.has(m.id) ? `<a class="m-video" href="${matchVideoUrl(m)}" target="_blank" rel="noopener" title="Broadcast available">${CAMERA_ICON}</a>` : ""}
+              ${m.video ? `<a class="m-video" href="${matchVideoUrl(m)}" target="_blank" rel="noopener" title="Broadcast available">${CAMERA_ICON}</a>` : ""}
             </div>
           </div>
         </div>`;
@@ -881,7 +505,29 @@ document.getElementById('resetBtn').addEventListener('click', ()=>{
   activeDay=""; renderDayChips(); render();
 });
 
-render();
+/* ---------------- Load live data ---------------- */
+async function loadData(){
+  try {
+    const res = await fetch('./data.json', {cache:"no-store"});
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const payload = await res.json();
+    MATCHES = payload.matches || [];
+    GENERATED_AT = payload.generated_at || null;
+  } catch (err){
+    console.warn("Could not load live data.json, app will show no matches:", err);
+    main.innerHTML = `<div class="empty-state">Couldn't load fixture data. Check your connection and reload.</div>`;
+    MATCHES = [];
+  }
+
+  days = [...new Set(MATCHES.map(m=>m.date))].sort();
+  document.getElementById('statMatches').textContent = MATCHES.length;
+  if (syncStatus) syncStatus.textContent = formatSyncTime(GENERATED_AT);
+  renderDayChips();
+  render();
+}
+
+loadData();
+setInterval(loadData, 5 * 60 * 1000); // pick up new scrapes without needing a manual reload
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
