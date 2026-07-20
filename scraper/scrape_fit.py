@@ -93,11 +93,17 @@ def parse_date_heading(text):
 
 
 def cell_team(cell):
-    """Extract (display_name, slug) from a team table cell."""
+    """Extract (display_name, slug) from a team table cell.
+    Some pages render the team name with its code appended inline
+    (e.g. "Belgium BEL") — strip that trailing code if present so the
+    display name is just "Belgium"."""
     a = cell.find("a")
     if a and a.get("href"):
         name = a.get_text(" ", strip=True)
         slug = a["href"].rstrip("/").split("/")[-1]
+        code = TEAM_CODES.get(slug, "")
+        if code and re.search(rf"\s{code}$", name, flags=re.IGNORECASE):
+            name = re.sub(rf"\s*{code}$", "", name, flags=re.IGNORECASE).strip()
         return name, slug
     text = cell.get_text(" ", strip=True)
     return text, ""
