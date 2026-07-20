@@ -18,14 +18,18 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Install dependencies
         run: pip install -r scraper/requirements.txt
+
       - name: Run scraper
         run: python scraper/scrape_fit.py
+
       - name: Commit data.json if changed
         run: |
           git config user.name "etc2026-bot"
@@ -35,5 +39,7 @@ jobs:
           else
             git add data.json
             git commit -m "Auto-update fixtures $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git fetch origin main
+            git rebase origin/main
             git push
           fi
