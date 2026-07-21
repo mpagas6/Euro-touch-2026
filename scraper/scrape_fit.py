@@ -154,9 +154,12 @@ def parse_division(code, meta):
                 offset = 1
 
             try:
+                try:
                 time_cell = cells[offset + 0]
                 field_cell = cells[offset + 1]
                 team_a_cell = cells[offset + 2]
+                score_a_cell = cells[offset + 3]
+                score_b_cell = cells[offset + 5]
                 team_b_cell = cells[offset + 6]
                 link_cell = cells[offset + 7]
             except IndexError:
@@ -192,11 +195,13 @@ def parse_division(code, meta):
 
             has_video = bool(tr.find("a", href=re.compile(r"/video/?$")))
 
-            score_m = SCORE_RE.search(tr.get_text(" ", strip=True))
+            # Score cells show "-" when unplayed, or the actual score once
+            # the match is finished (e.g. "14" / "1").
+            score_a_text = score_a_cell.get_text(strip=True)
+            score_b_text = score_b_cell.get_text(strip=True)
             score = None
-            if score_m and (slug_a or slug_b):
-                score = f"{score_m.group(1)}-{score_m.group(2)}"
-
+            if score_a_text.isdigit() and score_b_text.isdigit():
+                score = f"{score_a_text}-{score_b_text}"
             is_final = (not slug_a) or (not slug_b)
 
             if not (current_date and t and name_a and name_b):
