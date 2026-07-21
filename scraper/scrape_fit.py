@@ -175,9 +175,16 @@ def parse_division(code, meta):
 
             row_text = time_cell.get_text(" ", strip=True)
             t = extract_time_24h(row_text)
-            field_m = FIELD_RE.search(field_cell.get_text(" ", strip=True))
-            field = f"Field {field_m.group(1)}" if field_m else field_cell.get_text(" ", strip=True)
-
+            field_cell_text = field_cell.get_text(" ", strip=True)
+            field_m = FIELD_RE.search(field_cell_text)
+            if field_m:
+                field = f"Field {field_m.group(1)}"
+            else:
+                # Named venues (e.g. "Darragon Stadium") sometimes have a
+                # trailing referee/status marker like "TBA" glued on in the
+                # same cell — strip that so only the venue name shows.
+                cleaned = re.sub(r"\s*\(?\bTBA\b\)?\s*$", "", field_cell_text, flags=re.IGNORECASE).strip()
+                field = cleaned if cleaned else field_cell_text
             name_a, slug_a = cell_team(team_a_cell)
             name_b, slug_b = cell_team(team_b_cell)
             code_a = TEAM_CODES.get(slug_a, "")
