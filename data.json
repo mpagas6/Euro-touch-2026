@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T21:07:33.654263+00:00",
+ "generated_at": "2026-07-21T21:16:43.276733+00:00",
  "match_count": 358,
  "divisions": {
   "mo": "Men's Open",
@@ -514,7 +514,7 @@
    "cat": "wo",
    "date": "2026-07-21",
    "time": "19:30",
-   "field": "Darragon Stadium TBA",
+   "field": "Darragon Stadium",
    "teamA": "France",
    "codeA": "FRA",
    "teamB": "Ireland",
@@ -1714,7 +1714,7 @@
    "cat": "w27",
    "date": "2026-07-21",
    "time": "20:20",
-   "field": "Darragon Stadium TBA",
+   "field": "Darragon Stadium",
    "teamA": "France",
    "codeA": "FRA",
    "teamB": "Belgium",
