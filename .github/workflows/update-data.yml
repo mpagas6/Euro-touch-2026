@@ -1,0 +1,64 @@
+name: Update fixtures data
+
+on:
+  schedule:
+    # Runs at minute 5 of every hour (UTC). GitHub's scheduler is
+    # best-effort and can lag a few minutes at busy times.
+    - cron: "5 * * * *"
+  workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
+  push:
+    paths:
+      - "scraper/**"
+      - ".github/workflows/update-data.yml"
+
+# Only one run of this workflow at a time. If a manual run and the hourly
+# scheduled run ever overlap, the second one waits instead of racing the
+# first for the git push (which is what caused the merge-conflict error).
+concurrency:
+  group: fixtures-scrape
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: Run scraper
+        run: python scraper/scrape_fit.py
+
+      - name: Commit data.json if changed
+        run: |
+          git config user.name "etc2026-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          # data.json is fully machine-generated on every run, so there is
+          # nothing meaningful to "merge" between two versions of it — the
+          # freshest scrape always wins. Save it aside, sync cleanly to
+          # whatever is latest on origin/main, then restore our freshly
+          # scraped copy on top and commit that. This avoids rebase/merge
+          # conflicts entirely instead of trying to resolve them.
+          cp data.json /tmp/new-data.json
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/new-data.json data.json
+
+          if git diff --quiet -- data.json; then
+            echo "No changes to data.json"
+          else
+            git add data.json
+            git commit -m "Auto-update fixtures $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
