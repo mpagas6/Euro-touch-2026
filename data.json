@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-23T12:02:48.350290+00:00",
+ "generated_at": "2026-07-23T17:04:43.768747+00:00",
  "match_count": 358,
  "divisions": {
   "mo": "Men's Open",
@@ -208,7 +208,7 @@
    "id": 10174,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "17-1"
   },
   {
    "cat": "mo",
@@ -223,7 +223,7 @@
    "id": 10172,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "14-4"
   },
   {
    "cat": "mo",
@@ -238,7 +238,7 @@
    "id": 10173,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "12-2"
   },
   {
    "cat": "mo",
@@ -643,7 +643,7 @@
    "id": 10205,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "9-2"
   },
   {
    "cat": "wo",
@@ -658,7 +658,7 @@
    "id": 10207,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "15-4"
   },
   {
    "cat": "wo",
@@ -1243,7 +1243,7 @@
    "id": 10438,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "6-12"
   },
   {
    "cat": "xo",
@@ -1258,7 +1258,7 @@
    "id": 10448,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "10-8"
   },
   {
    "cat": "xo",
@@ -1273,7 +1273,7 @@
    "id": 10449,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "9-7"
   },
   {
    "cat": "xo",
@@ -1288,7 +1288,7 @@
    "id": 10450,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "15-1"
   },
   {
    "cat": "xo",
@@ -1303,7 +1303,7 @@
    "id": 10444,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "2-13"
   },
   {
    "cat": "xo",
@@ -1318,7 +1318,7 @@
    "id": 10442,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "4-15"
   },
   {
    "cat": "xo",
@@ -1333,7 +1333,7 @@
    "id": 10441,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "13-6"
   },
   {
    "cat": "xo",
@@ -1903,7 +1903,7 @@
    "id": 10241,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "12-1"
   },
   {
    "cat": "w27",
@@ -1918,7 +1918,7 @@
    "id": 10242,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "2-9"
   },
   {
    "cat": "w27",
@@ -1933,7 +1933,7 @@
    "id": 10243,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "9-2"
   },
   {
    "cat": "w27",
@@ -1948,7 +1948,7 @@
    "id": 10254,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "16-0"
   },
   {
    "cat": "w27",
@@ -1963,7 +1963,7 @@
    "id": 10253,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "1-6"
   },
   {
    "cat": "w27",
@@ -1978,7 +1978,7 @@
    "id": 10255,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-8"
   },
   {
    "cat": "w27",
@@ -2308,7 +2308,7 @@
    "id": 10503,
    "isFinal": 0,
    "video": true,
-   "score": "9-0"
+   "score": "10-0"
   },
   {
    "cat": "m3035",
@@ -2518,7 +2518,7 @@
    "id": 10515,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "7-6"
   },
   {
    "cat": "m3035",
@@ -2533,7 +2533,7 @@
    "id": 10517,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "7-12"
   },
   {
    "cat": "m3035",
@@ -2548,7 +2548,7 @@
    "id": 10516,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "4-8"
   },
   {
    "cat": "m3035",
@@ -2563,7 +2563,7 @@
    "id": 10523,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "11-3"
   },
   {
    "cat": "m3035",
@@ -2578,7 +2578,7 @@
    "id": 10520,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-12"
   },
   {
    "cat": "m3035",
@@ -2593,7 +2593,7 @@
    "id": 10522,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-14"
   },
   {
    "cat": "m3035",
@@ -2608,7 +2608,7 @@
    "id": 10519,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "9-10"
   },
   {
    "cat": "m3035",
@@ -2623,7 +2623,7 @@
    "id": 10521,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "2-8"
   },
   {
    "cat": "m3035",
@@ -3118,7 +3118,7 @@
    "id": 10280,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "8-8"
   },
   {
    "cat": "x30",
@@ -3133,7 +3133,7 @@
    "id": 10279,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "12-4"
   },
   {
    "cat": "x30",
@@ -3148,7 +3148,7 @@
    "id": 10283,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "6-4"
   },
   {
    "cat": "x30",
@@ -3163,7 +3163,7 @@
    "id": 10281,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-12"
   },
   {
    "cat": "x30",
@@ -3463,7 +3463,7 @@
    "id": 10310,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-8"
   },
   {
    "cat": "w35",
@@ -3478,7 +3478,7 @@
    "id": 10312,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "8-0"
   },
   {
    "cat": "w35",
@@ -3853,7 +3853,7 @@
    "id": 10344,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "8-8"
   },
   {
    "cat": "m40",
@@ -3868,7 +3868,7 @@
    "id": 10345,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "5-4"
   },
   {
    "cat": "m40",
@@ -3883,7 +3883,7 @@
    "id": 10343,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "8-6"
   },
   {
    "cat": "m40",
@@ -3898,7 +3898,7 @@
    "id": 10342,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "14-1"
   },
   {
    "cat": "m40",
@@ -4204,21 +4204,6 @@
    "cat": "w40",
    "date": "2026-07-22",
    "time": "10:20",
-   "field": "Field 5",
-   "teamA": "England W40 ENGW40",
-   "codeA": "",
-   "teamB": "Eurostars",
-   "codeB": "EUR",
-   "round": "Round 1",
-   "id": 10366,
-   "isFinal": 0,
-   "video": false,
-   "score": "12-3"
-  },
-  {
-   "cat": "w40",
-   "date": "2026-07-22",
-   "time": "10:20",
    "field": "Field 6",
    "teamA": "Scotland",
    "codeA": "SCO",
@@ -4229,6 +4214,21 @@
    "isFinal": 0,
    "video": false,
    "score": "4-7"
+  },
+  {
+   "cat": "w40",
+   "date": "2026-07-22",
+   "time": "10:20",
+   "field": "Field 5",
+   "teamA": "England W40 ENGW40",
+   "codeA": "",
+   "teamB": "Eurostars",
+   "codeB": "EUR",
+   "round": "Round 1",
+   "id": 10366,
+   "isFinal": 0,
+   "video": false,
+   "score": "12-3"
   },
   {
    "cat": "w40",
@@ -4288,7 +4288,7 @@
    "id": 10371,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "8-1"
   },
   {
    "cat": "w40",
@@ -4303,13 +4303,13 @@
    "id": 10373,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "6-2"
   },
   {
    "cat": "w40",
    "date": "2026-07-23",
    "time": "18:35",
-   "field": "Field 4",
+   "field": "Field 9",
    "teamA": "Eurostars",
    "codeA": "EUR",
    "teamB": "England W40 ENGW40",
@@ -4543,7 +4543,7 @@
    "id": 10394,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "4-7"
   },
   {
    "cat": "m45",
@@ -4558,7 +4558,7 @@
    "id": 10392,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "7-6"
   },
   {
    "cat": "m45",
@@ -4573,7 +4573,7 @@
    "id": 10397,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "3-12"
   },
   {
    "cat": "m45",
@@ -4588,7 +4588,7 @@
    "id": 10396,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "13-9"
   },
   {
    "cat": "m45",
@@ -4744,6 +4744,21 @@
    "cat": "m5055",
    "date": "2026-07-22",
    "time": "08:30",
+   "field": "Field 8",
+   "teamA": "Portugal PRT50",
+   "codeA": "PRT",
+   "teamB": "Wales WAL50",
+   "codeB": "WAL",
+   "round": "Round 1",
+   "id": 10547,
+   "isFinal": 0,
+   "video": true,
+   "score": "2-11"
+  },
+  {
+   "cat": "m5055",
+   "date": "2026-07-22",
+   "time": "08:30",
    "field": "Field 9",
    "teamA": "Ireland IRL50",
    "codeA": "IRL",
@@ -4773,17 +4788,17 @@
   {
    "cat": "m5055",
    "date": "2026-07-22",
-   "time": "08:30",
-   "field": "Field 8",
-   "teamA": "Portugal PRT50",
-   "codeA": "PRT",
-   "teamB": "Wales WAL50",
-   "codeB": "WAL",
+   "time": "09:25",
+   "field": "Field 5",
+   "teamA": "France FRA50",
+   "codeA": "FRA",
+   "teamB": "England M55 ENG55",
+   "codeB": "ENG",
    "round": "Round 1",
-   "id": 10547,
+   "id": 10546,
    "isFinal": 0,
-   "video": true,
-   "score": "2-11"
+   "video": false,
+   "score": "12-2"
   },
   {
    "cat": "m5055",
@@ -4799,21 +4814,6 @@
    "isFinal": 0,
    "video": false,
    "score": "10-0"
-  },
-  {
-   "cat": "m5055",
-   "date": "2026-07-22",
-   "time": "09:25",
-   "field": "Field 5",
-   "teamA": "France FRA50",
-   "codeA": "FRA",
-   "teamB": "England M55 ENG55",
-   "codeB": "ENG",
-   "round": "Round 1",
-   "id": 10546,
-   "isFinal": 0,
-   "video": false,
-   "score": "12-2"
   },
   {
    "cat": "m5055",
@@ -4834,21 +4834,6 @@
    "cat": "m5055",
    "date": "2026-07-22",
    "time": "13:05",
-   "field": "Field 6",
-   "teamA": "Wales M55 WAL55",
-   "codeA": "WAL",
-   "teamB": "Scotland SCO50",
-   "codeB": "SCO",
-   "round": "Round 2",
-   "id": 10543,
-   "isFinal": 0,
-   "video": false,
-   "score": "3-7"
-  },
-  {
-   "cat": "m5055",
-   "date": "2026-07-22",
-   "time": "13:05",
    "field": "Field 8",
    "teamA": "France FRA50",
    "codeA": "FRA",
@@ -4859,6 +4844,21 @@
    "isFinal": 0,
    "video": true,
    "score": "15-4"
+  },
+  {
+   "cat": "m5055",
+   "date": "2026-07-22",
+   "time": "13:05",
+   "field": "Field 6",
+   "teamA": "Wales M55 WAL55",
+   "codeA": "WAL",
+   "teamB": "Scotland SCO50",
+   "codeB": "SCO",
+   "round": "Round 2",
+   "id": 10543,
+   "isFinal": 0,
+   "video": false,
+   "score": "3-7"
   },
   {
    "cat": "m5055",
@@ -4969,6 +4969,21 @@
    "cat": "m5055",
    "date": "2026-07-23",
    "time": "08:30",
+   "field": "Field 7",
+   "teamA": "England ENG50",
+   "codeA": "ENG",
+   "teamB": "Ireland IRL50",
+   "codeB": "IRL",
+   "round": "Round 4",
+   "id": 10554,
+   "isFinal": 0,
+   "video": false,
+   "score": "7-1"
+  },
+  {
+   "cat": "m5055",
+   "date": "2026-07-23",
+   "time": "08:30",
    "field": "Field 8",
    "teamA": "Wales WAL50",
    "codeA": "WAL",
@@ -4994,21 +5009,6 @@
    "isFinal": 0,
    "video": false,
    "score": "2-4"
-  },
-  {
-   "cat": "m5055",
-   "date": "2026-07-23",
-   "time": "08:30",
-   "field": "Field 7",
-   "teamA": "England ENG50",
-   "codeA": "ENG",
-   "teamB": "Ireland IRL50",
-   "codeB": "IRL",
-   "round": "Round 4",
-   "id": 10554,
-   "isFinal": 0,
-   "video": false,
-   "score": "7-1"
   },
   {
    "cat": "m5055",
@@ -5053,7 +5053,7 @@
    "id": 10563,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "10-2"
   },
   {
    "cat": "m5055",
@@ -5068,7 +5068,7 @@
    "id": 10568,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "11-3"
   },
   {
    "cat": "m5055",
@@ -5083,7 +5083,7 @@
    "id": 10565,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "8-2"
   },
   {
    "cat": "m5055",
@@ -5098,7 +5098,7 @@
    "id": 10566,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-6"
   },
   {
    "cat": "m5055",
@@ -5113,7 +5113,7 @@
    "id": 10564,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "8-4"
   },
   {
    "cat": "m5055",
@@ -5209,44 +5209,14 @@
    "cat": "m5055",
    "date": "2026-07-24",
    "time": "16:00",
-   "field": "Field 1",
-   "teamA": "2nd Pool A 2nd Pool A",
-   "codeA": "",
-   "teamB": "3rd Pool B 3rd Pool B",
-   "codeB": "",
-   "round": "Quarter Final 2",
-   "id": 10570,
-   "isFinal": 1,
-   "video": true,
-   "score": null
-  },
-  {
-   "cat": "m5055",
-   "date": "2026-07-24",
-   "time": "16:00",
-   "field": "Field 4",
-   "teamA": "1st Pool A 1st Pool A",
-   "codeA": "",
-   "teamB": "4th Pool B 4th Pool B",
-   "codeB": "",
-   "round": "Quarter Final 1",
-   "id": 10569,
-   "isFinal": 1,
-   "video": false,
-   "score": null
-  },
-  {
-   "cat": "m5055",
-   "date": "2026-07-24",
-   "time": "16:00",
    "field": "Field 3",
-   "teamA": "4th Pool A 4th Pool A",
-   "codeA": "",
-   "teamB": "1st Pool B 1st Pool B",
-   "codeB": "",
+   "teamA": "Jersey JEY50",
+   "codeA": "JEY",
+   "teamB": "France FRA50",
+   "codeB": "FRA",
    "round": "Quarter Final 4",
    "id": 10572,
-   "isFinal": 1,
+   "isFinal": 0,
    "video": false,
    "score": null
   },
@@ -5255,28 +5225,43 @@
    "date": "2026-07-24",
    "time": "16:00",
    "field": "Field 2",
-   "teamA": "3rd Pool A 3rd Pool A",
-   "codeA": "",
-   "teamB": "2nd Pool B 2nd Pool B",
-   "codeB": "",
+   "teamA": "Ireland IRL50",
+   "codeA": "IRL",
+   "teamB": "Wales WAL50",
+   "codeB": "WAL",
    "round": "Quarter Final 3",
    "id": 10571,
-   "isFinal": 1,
+   "isFinal": 0,
    "video": true,
    "score": null
   },
   {
    "cat": "m5055",
    "date": "2026-07-24",
-   "time": "19:00",
+   "time": "16:00",
    "field": "Field 1",
-   "teamA": "Winner Quarter Final 1 Winner Quarter Final 1",
-   "codeA": "",
-   "teamB": "Winner Quarter Final 3 Winner Quarter Final 3",
-   "codeB": "",
-   "round": "Semi Final 1",
-   "id": 10573,
-   "isFinal": 1,
+   "teamA": "Scotland SCO50",
+   "codeA": "SCO",
+   "teamB": "Chile CHL50",
+   "codeB": "CHL",
+   "round": "Quarter Final 2",
+   "id": 10570,
+   "isFinal": 0,
+   "video": true,
+   "score": null
+  },
+  {
+   "cat": "m5055",
+   "date": "2026-07-24",
+   "time": "16:00",
+   "field": "Field 4",
+   "teamA": "England ENG50",
+   "codeA": "ENG",
+   "teamB": "Portugal PRT50",
+   "codeB": "PRT",
+   "round": "Quarter Final 1",
+   "id": 10569,
+   "isFinal": 0,
    "video": false,
    "score": null
   },
@@ -5284,13 +5269,13 @@
    "cat": "m5055",
    "date": "2026-07-24",
    "time": "19:00",
-   "field": "Field 5",
-   "teamA": "Loser Quarter Final 2 Loser Quarter Final 2",
+   "field": "Field 8",
+   "teamA": "Winner Quarter Final 2 Winner Quarter Final 2",
    "codeA": "",
-   "teamB": "Loser Quarter Final 4 Loser Quarter Final 4",
+   "teamB": "Winner Quarter Final 4 Winner Quarter Final 4",
    "codeB": "",
-   "round": "5th/8th Playoff 2",
-   "id": 10576,
+   "round": "Semi Final 2",
+   "id": 10574,
    "isFinal": 1,
    "video": false,
    "score": null
@@ -5314,13 +5299,28 @@
    "cat": "m5055",
    "date": "2026-07-24",
    "time": "19:00",
-   "field": "Field 8",
-   "teamA": "Winner Quarter Final 2 Winner Quarter Final 2",
+   "field": "Field 5",
+   "teamA": "Loser Quarter Final 2 Loser Quarter Final 2",
    "codeA": "",
-   "teamB": "Winner Quarter Final 4 Winner Quarter Final 4",
+   "teamB": "Loser Quarter Final 4 Loser Quarter Final 4",
    "codeB": "",
-   "round": "Semi Final 2",
-   "id": 10574,
+   "round": "5th/8th Playoff 2",
+   "id": 10576,
+   "isFinal": 1,
+   "video": false,
+   "score": null
+  },
+  {
+   "cat": "m5055",
+   "date": "2026-07-24",
+   "time": "19:00",
+   "field": "Field 1",
+   "teamA": "Winner Quarter Final 1 Winner Quarter Final 1",
+   "codeA": "",
+   "teamB": "Winner Quarter Final 3 Winner Quarter Final 3",
+   "codeB": "",
+   "round": "Semi Final 1",
+   "id": 10573,
    "isFinal": 1,
    "video": false,
    "score": null
