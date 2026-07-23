@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-23T17:04:43.768747+00:00",
+ "generated_at": "2026-07-23T19:05:43.649042+00:00",
  "match_count": 358,
  "divisions": {
   "mo": "Men's Open",
@@ -253,7 +253,7 @@
    "id": 10176,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "0-17"
   },
   {
    "cat": "mo",
@@ -268,7 +268,7 @@
    "id": 10177,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-11"
   },
   {
    "cat": "mo",
@@ -283,7 +283,7 @@
    "id": 10175,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "4-9"
   },
   {
    "cat": "mo",
@@ -673,7 +673,7 @@
    "id": 10210,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "7-6"
   },
   {
    "cat": "wo",
@@ -688,7 +688,7 @@
    "id": 10209,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "16-1"
   },
   {
    "cat": "wo",
@@ -1348,7 +1348,7 @@
    "id": 10454,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "6-8"
   },
   {
    "cat": "xo",
@@ -1363,7 +1363,7 @@
    "id": 10453,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-13"
   },
   {
    "cat": "xo",
@@ -3493,7 +3493,7 @@
    "id": 10323,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "9-3"
   },
   {
    "cat": "w35",
@@ -3508,7 +3508,7 @@
    "id": 10322,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "0-10"
   },
   {
    "cat": "w35",
@@ -3913,7 +3913,7 @@
    "id": 10347,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "5-6"
   },
   {
    "cat": "m40",
@@ -3928,7 +3928,7 @@
    "id": 10348,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "9-3"
   },
   {
    "cat": "m40",
@@ -3943,7 +3943,7 @@
    "id": 10346,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "18-2"
   },
   {
    "cat": "m40",
@@ -3958,7 +3958,7 @@
    "id": 10349,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "1-9"
   },
   {
    "cat": "m40",
@@ -4318,7 +4318,7 @@
    "id": 10372,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-7"
   },
   {
    "cat": "w40",
