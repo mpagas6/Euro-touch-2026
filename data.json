@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-23T04:34:14.312194+00:00",
+ "generated_at": "2026-07-23T12:02:48.350290+00:00",
  "match_count": 358,
  "divisions": {
   "mo": "Men's Open",
@@ -163,7 +163,7 @@
    "id": 10169,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "4-7"
   },
   {
    "cat": "mo",
@@ -178,7 +178,7 @@
    "id": 10170,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "5-7"
   },
   {
    "cat": "mo",
@@ -193,7 +193,7 @@
    "id": 10171,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "16-3"
   },
   {
    "cat": "mo",
@@ -613,7 +613,7 @@
    "id": 10203,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "5-14"
   },
   {
    "cat": "wo",
@@ -628,7 +628,7 @@
    "id": 10202,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-12"
   },
   {
    "cat": "wo",
@@ -1138,7 +1138,7 @@
    "id": 10445,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "3-13"
   },
   {
    "cat": "xo",
@@ -1153,7 +1153,7 @@
    "id": 10433,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "14-8"
   },
   {
    "cat": "xo",
@@ -1168,7 +1168,7 @@
    "id": 10435,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "12-2"
   },
   {
    "cat": "xo",
@@ -1183,7 +1183,7 @@
    "id": 10446,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "9-12"
   },
   {
    "cat": "xo",
@@ -1198,7 +1198,7 @@
    "id": 10447,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "4-20"
   },
   {
    "cat": "xo",
@@ -1213,7 +1213,7 @@
    "id": 10439,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-11"
   },
   {
    "cat": "xo",
@@ -1228,7 +1228,7 @@
    "id": 10437,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "22-1"
   },
   {
    "cat": "xo",
@@ -1858,7 +1858,7 @@
    "id": 10231,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "2-11"
   },
   {
    "cat": "w27",
@@ -1873,7 +1873,7 @@
    "id": 10230,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "0-15"
   },
   {
    "cat": "w27",
@@ -1888,7 +1888,7 @@
    "id": 10229,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-1"
   },
   {
    "cat": "w27",
@@ -2413,7 +2413,7 @@
    "id": 10513,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "10-5"
   },
   {
    "cat": "m3035",
@@ -2428,7 +2428,7 @@
    "id": 10512,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-8"
   },
   {
    "cat": "m3035",
@@ -2443,7 +2443,7 @@
    "id": 10511,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "5-5"
   },
   {
    "cat": "m3035",
@@ -2458,7 +2458,7 @@
    "id": 10509,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-7"
   },
   {
    "cat": "m3035",
@@ -2473,7 +2473,7 @@
    "id": 10510,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "8-3"
   },
   {
    "cat": "m3035",
@@ -2488,7 +2488,7 @@
    "id": 10518,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "0-13"
   },
   {
    "cat": "m3035",
@@ -2503,7 +2503,7 @@
    "id": 10514,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "10-3"
   },
   {
    "cat": "m3035",
@@ -3073,7 +3073,7 @@
    "id": 10272,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "12-6"
   },
   {
    "cat": "x30",
@@ -3088,7 +3088,7 @@
    "id": 10277,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "13-3"
   },
   {
    "cat": "x30",
@@ -3103,7 +3103,7 @@
    "id": 10275,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "4-6"
   },
   {
    "cat": "x30",
@@ -3433,7 +3433,7 @@
    "id": 10300,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "9-4"
   },
   {
    "cat": "w35",
@@ -3448,7 +3448,7 @@
    "id": 10299,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "0-16"
   },
   {
    "cat": "w35",
@@ -3793,7 +3793,7 @@
    "id": 10341,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "8-4"
   },
   {
    "cat": "m40",
@@ -3808,7 +3808,7 @@
    "id": 10338,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-16"
   },
   {
    "cat": "m40",
@@ -3823,7 +3823,7 @@
    "id": 10339,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "7-6"
   },
   {
    "cat": "m40",
@@ -3838,7 +3838,7 @@
    "id": 10340,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "9-3"
   },
   {
    "cat": "m40",
@@ -4273,7 +4273,7 @@
    "id": 10370,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "6-2"
   },
   {
    "cat": "w40",
@@ -4513,7 +4513,7 @@
    "id": 10390,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "6-7"
   },
   {
    "cat": "m45",
@@ -4528,7 +4528,7 @@
    "id": 10389,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "14-0"
   },
   {
    "cat": "m45",
@@ -4963,7 +4963,7 @@
    "id": 10558,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "4-3"
   },
   {
    "cat": "m5055",
@@ -4978,7 +4978,7 @@
    "id": 10561,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "3-4"
   },
   {
    "cat": "m5055",
@@ -4993,7 +4993,7 @@
    "id": 10556,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-4"
   },
   {
    "cat": "m5055",
@@ -5008,7 +5008,7 @@
    "id": 10554,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "7-1"
   },
   {
    "cat": "m5055",
@@ -5023,7 +5023,7 @@
    "id": 10555,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "11-4"
   },
   {
    "cat": "m5055",
@@ -5038,7 +5038,7 @@
    "id": 10560,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "6-1"
   },
   {
    "cat": "m5055",
