@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-23T20:43:09.353820+00:00",
+ "generated_at": "2026-07-24T00:15:35.490050+00:00",
  "match_count": 358,
  "divisions": {
   "mo": "Men's Open",
@@ -4969,21 +4969,6 @@
    "cat": "m5055",
    "date": "2026-07-23",
    "time": "08:30",
-   "field": "Field 7",
-   "teamA": "England ENG50",
-   "codeA": "ENG",
-   "teamB": "Ireland IRL50",
-   "codeB": "IRL",
-   "round": "Round 4",
-   "id": 10554,
-   "isFinal": 0,
-   "video": false,
-   "score": "7-1"
-  },
-  {
-   "cat": "m5055",
-   "date": "2026-07-23",
-   "time": "08:30",
    "field": "Field 8",
    "teamA": "Wales WAL50",
    "codeA": "WAL",
@@ -4999,16 +4984,16 @@
    "cat": "m5055",
    "date": "2026-07-23",
    "time": "08:30",
-   "field": "Field 5",
-   "teamA": "Portugal M55 PRT55",
-   "codeA": "PRT",
-   "teamB": "Wales M55 WAL55",
-   "codeB": "WAL",
+   "field": "Field 7",
+   "teamA": "England ENG50",
+   "codeA": "ENG",
+   "teamB": "Ireland IRL50",
+   "codeB": "IRL",
    "round": "Round 4",
-   "id": 10556,
+   "id": 10554,
    "isFinal": 0,
    "video": false,
-   "score": "2-4"
+   "score": "7-1"
   },
   {
    "cat": "m5055",
@@ -5074,21 +5059,6 @@
    "cat": "m5055",
    "date": "2026-07-23",
    "time": "14:55",
-   "field": "Field 1",
-   "teamA": "Scotland SCO50",
-   "codeA": "SCO",
-   "teamB": "Portugal M55 PRT55",
-   "codeB": "PRT",
-   "round": "Round 5",
-   "id": 10565,
-   "isFinal": 0,
-   "video": true,
-   "score": "8-2"
-  },
-  {
-   "cat": "m5055",
-   "date": "2026-07-23",
-   "time": "14:55",
    "field": "Field 5",
    "teamA": "Chile CHL50",
    "codeA": "CHL",
@@ -5099,6 +5069,21 @@
    "isFinal": 0,
    "video": false,
    "score": "2-6"
+  },
+  {
+   "cat": "m5055",
+   "date": "2026-07-23",
+   "time": "14:55",
+   "field": "Field 1",
+   "teamA": "Scotland SCO50",
+   "codeA": "SCO",
+   "teamB": "Portugal M55 PRT55",
+   "codeB": "PRT",
+   "round": "Round 5",
+   "id": 10565,
+   "isFinal": 0,
+   "video": true,
+   "score": "8-2"
   },
   {
    "cat": "m5055",
@@ -5114,6 +5099,21 @@
    "isFinal": 0,
    "video": false,
    "score": "8-4"
+  },
+  {
+   "cat": "m5055",
+   "date": "2026-07-23",
+   "time": "08:30",
+   "field": "Field 5",
+   "teamA": "Portugal M55 PRT55",
+   "codeA": "PRT",
+   "teamB": "Wales M55 WAL55",
+   "codeB": "WAL",
+   "round": "Round 1",
+   "id": 10556,
+   "isFinal": 0,
+   "video": false,
+   "score": "2-4"
   },
   {
    "cat": "m5055",
