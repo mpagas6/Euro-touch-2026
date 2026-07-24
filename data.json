@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-24T00:15:35.490050+00:00",
+ "generated_at": "2026-07-24T09:59:57.583801+00:00",
  "match_count": 358,
  "divisions": {
   "mo": "Men's Open",
@@ -298,7 +298,7 @@
    "id": 10179,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "10-7"
   },
   {
    "cat": "mo",
@@ -313,7 +313,7 @@
    "id": 10178,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "24-2"
   },
   {
    "cat": "mo",
@@ -328,7 +328,7 @@
    "id": 10180,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-10"
   },
   {
    "cat": "mo",
@@ -874,6 +874,36 @@
    "cat": "xo",
    "date": "2026-07-22",
    "time": "10:20",
+   "field": "Field 3",
+   "teamA": "Ireland",
+   "codeA": "IRL",
+   "teamB": "Netherlands",
+   "codeB": "NLD",
+   "round": "Round 1",
+   "id": 10414,
+   "isFinal": 0,
+   "video": false,
+   "score": "11-5"
+  },
+  {
+   "cat": "xo",
+   "date": "2026-07-22",
+   "time": "10:20",
+   "field": "Field 4",
+   "teamA": "Cayman islands",
+   "codeA": "CYM",
+   "teamB": "Wales",
+   "codeB": "WAL",
+   "round": "Round 1",
+   "id": 10424,
+   "isFinal": 0,
+   "video": false,
+   "score": "2-12"
+  },
+  {
+   "cat": "xo",
+   "date": "2026-07-22",
+   "time": "10:20",
    "field": "Field 1",
    "teamA": "Italy",
    "codeA": "ITA",
@@ -899,51 +929,6 @@
    "isFinal": 0,
    "video": false,
    "score": "5-4"
-  },
-  {
-   "cat": "xo",
-   "date": "2026-07-22",
-   "time": "10:20",
-   "field": "Field 4",
-   "teamA": "Cayman islands",
-   "codeA": "CYM",
-   "teamB": "Wales",
-   "codeB": "WAL",
-   "round": "Round 1",
-   "id": 10424,
-   "isFinal": 0,
-   "video": false,
-   "score": "2-12"
-  },
-  {
-   "cat": "xo",
-   "date": "2026-07-22",
-   "time": "10:20",
-   "field": "Field 3",
-   "teamA": "Ireland",
-   "codeA": "IRL",
-   "teamB": "Netherlands",
-   "codeB": "NLD",
-   "round": "Round 1",
-   "id": 10414,
-   "isFinal": 0,
-   "video": false,
-   "score": "11-5"
-  },
-  {
-   "cat": "xo",
-   "date": "2026-07-22",
-   "time": "13:05",
-   "field": "Field 2",
-   "teamA": "England",
-   "codeA": "ENG",
-   "teamB": "Switzerland",
-   "codeB": "CHE",
-   "round": "Round 2",
-   "id": 10416,
-   "isFinal": 0,
-   "video": true,
-   "score": "13-9"
   },
   {
    "cat": "xo",
@@ -993,17 +978,17 @@
   {
    "cat": "xo",
    "date": "2026-07-22",
-   "time": "14:55",
+   "time": "13:05",
    "field": "Field 2",
-   "teamA": "Belgium",
-   "codeA": "BEL",
-   "teamB": "Jersey",
-   "codeB": "JEY",
+   "teamA": "England",
+   "codeA": "ENG",
+   "teamB": "Switzerland",
+   "codeB": "CHE",
    "round": "Round 2",
-   "id": 10418,
+   "id": 10416,
    "isFinal": 0,
    "video": true,
-   "score": "11-2"
+   "score": "13-9"
   },
   {
    "cat": "xo",
@@ -1019,6 +1004,21 @@
    "isFinal": 0,
    "video": false,
    "score": "3-11"
+  },
+  {
+   "cat": "xo",
+   "date": "2026-07-22",
+   "time": "14:55",
+   "field": "Field 2",
+   "teamA": "Belgium",
+   "codeA": "BEL",
+   "teamB": "Jersey",
+   "codeB": "JEY",
+   "round": "Round 2",
+   "id": 10418,
+   "isFinal": 0,
+   "video": true,
+   "score": "11-2"
   },
   {
    "cat": "xo",
@@ -1039,16 +1039,16 @@
    "cat": "xo",
    "date": "2026-07-22",
    "time": "17:40",
-   "field": "Field 4",
-   "teamA": "Cayman islands",
-   "codeA": "CYM",
-   "teamB": "Germany",
-   "codeB": "DEU",
+   "field": "Field 8",
+   "teamA": "Belgium",
+   "codeA": "BEL",
+   "teamB": "Ireland",
+   "codeB": "IRL",
    "round": "Round 3",
-   "id": 10430,
+   "id": 10423,
    "isFinal": 0,
-   "video": false,
-   "score": "8-11"
+   "video": true,
+   "score": "13-4"
   },
   {
    "cat": "xo",
@@ -1069,16 +1069,16 @@
    "cat": "xo",
    "date": "2026-07-22",
    "time": "17:40",
-   "field": "Field 8",
-   "teamA": "Belgium",
-   "codeA": "BEL",
-   "teamB": "Ireland",
-   "codeB": "IRL",
+   "field": "Field 4",
+   "teamA": "Cayman islands",
+   "codeA": "CYM",
+   "teamB": "Germany",
+   "codeB": "DEU",
    "round": "Round 3",
-   "id": 10423,
+   "id": 10430,
    "isFinal": 0,
-   "video": true,
-   "score": "13-4"
+   "video": false,
+   "score": "8-11"
   },
   {
    "cat": "xo",
@@ -1129,16 +1129,16 @@
    "cat": "xo",
    "date": "2026-07-23",
    "time": "09:25",
-   "field": "Field 1",
-   "teamA": "Cayman islands",
-   "codeA": "CYM",
-   "teamB": "France",
-   "codeB": "FRA",
+   "field": "Field 8",
+   "teamA": "Switzerland",
+   "codeA": "CHE",
+   "teamB": "Ireland",
+   "codeB": "IRL",
    "round": "Round 4",
-   "id": 10445,
+   "id": 10435,
    "isFinal": 0,
    "video": true,
-   "score": "3-13"
+   "score": "12-2"
   },
   {
    "cat": "xo",
@@ -1159,16 +1159,16 @@
    "cat": "xo",
    "date": "2026-07-23",
    "time": "09:25",
-   "field": "Field 8",
-   "teamA": "Switzerland",
-   "codeA": "CHE",
-   "teamB": "Ireland",
-   "codeB": "IRL",
+   "field": "Field 1",
+   "teamA": "Cayman islands",
+   "codeA": "CYM",
+   "teamB": "France",
+   "codeB": "FRA",
    "round": "Round 4",
-   "id": 10435,
+   "id": 10445,
    "isFinal": 0,
    "video": true,
-   "score": "12-2"
+   "score": "3-13"
   },
   {
    "cat": "xo",
@@ -1339,21 +1339,6 @@
    "cat": "xo",
    "date": "2026-07-23",
    "time": "18:35",
-   "field": "Field 2",
-   "teamA": "Jersey",
-   "codeA": "JEY",
-   "teamB": "Netherlands",
-   "codeB": "NLD",
-   "round": "Round 7",
-   "id": 10454,
-   "isFinal": 0,
-   "video": true,
-   "score": "6-8"
-  },
-  {
-   "cat": "xo",
-   "date": "2026-07-23",
-   "time": "18:35",
    "field": "Field 7",
    "teamA": "Scotland",
    "codeA": "SCO",
@@ -1364,6 +1349,21 @@
    "isFinal": 0,
    "video": false,
    "score": "3-13"
+  },
+  {
+   "cat": "xo",
+   "date": "2026-07-23",
+   "time": "18:35",
+   "field": "Field 2",
+   "teamA": "Jersey",
+   "codeA": "JEY",
+   "teamB": "Netherlands",
+   "codeB": "NLD",
+   "round": "Round 7",
+   "id": 10454,
+   "isFinal": 0,
+   "video": true,
+   "score": "6-8"
   },
   {
    "cat": "xo",
@@ -1378,6 +1378,21 @@
    "id": 10451,
    "isFinal": 0,
    "video": false,
+   "score": "9-4"
+  },
+  {
+   "cat": "xo",
+   "date": "2026-07-24",
+   "time": "11:15",
+   "field": "Field 2",
+   "teamA": "Netherlands",
+   "codeA": "NLD",
+   "teamB": "Portugal",
+   "codeB": "PRT",
+   "round": "Round 8",
+   "id": 10465,
+   "isFinal": 0,
+   "video": true,
    "score": null
   },
   {
@@ -1385,29 +1400,14 @@
    "date": "2026-07-24",
    "time": "11:15",
    "field": "Field 4",
-   "teamA": "5th Pool A 5th Pool A",
-   "codeA": "",
-   "teamB": "6th Pool B 6th Pool B",
-   "codeB": "",
-   "round": "Round 8",
-   "id": 10465,
-   "isFinal": 1,
-   "video": false,
-   "score": null
-  },
-  {
-   "cat": "xo",
-   "date": "2026-07-24",
-   "time": "11:15",
-   "field": "Field 2",
-   "teamA": "6th Pool A 6th Pool A",
-   "codeA": "",
-   "teamB": "5th Pool B 5th Pool B",
-   "codeB": "",
+   "teamA": "Scotland",
+   "codeA": "SCO",
+   "teamB": "Cayman islands",
+   "codeB": "CYM",
    "round": "Round 8",
    "id": 10466,
-   "isFinal": 1,
-   "video": true,
+   "isFinal": 0,
+   "video": false,
    "score": null
   },
   {
@@ -1415,13 +1415,13 @@
    "date": "2026-07-24",
    "time": "14:10",
    "field": "Field 8",
-   "teamA": "7th Pool A 7th Pool A",
-   "codeA": "",
-   "teamB": "5th Pool B 5th Pool B",
-   "codeB": "",
+   "teamA": "Jersey",
+   "codeA": "JEY",
+   "teamB": "Cayman islands",
+   "codeB": "CYM",
    "round": "Round 9",
    "id": 10468,
-   "isFinal": 1,
+   "isFinal": 0,
    "video": true,
    "score": null
   },
@@ -1430,28 +1430,13 @@
    "date": "2026-07-24",
    "time": "14:10",
    "field": "Field 7",
-   "teamA": "6th Pool A 6th Pool A",
-   "codeA": "",
-   "teamB": "6th Pool B 6th Pool B",
-   "codeB": "",
+   "teamA": "Scotland",
+   "codeA": "SCO",
+   "teamB": "Portugal",
+   "codeB": "PRT",
    "round": "Round 9",
    "id": 10467,
-   "isFinal": 1,
-   "video": false,
-   "score": null
-  },
-  {
-   "cat": "xo",
-   "date": "2026-07-24",
-   "time": "17:00",
-   "field": "Field 7",
-   "teamA": "5th Pool A 5th Pool A",
-   "codeA": "",
-   "teamB": "7th Pool A 7th Pool A",
-   "codeB": "",
-   "round": "Round 10",
-   "id": 10473,
-   "isFinal": 1,
+   "isFinal": 0,
    "video": false,
    "score": null
   },
@@ -1460,13 +1445,43 @@
    "date": "2026-07-24",
    "time": "17:00",
    "field": "Field 6",
-   "teamA": "5th Pool B 5th Pool B",
-   "codeA": "",
-   "teamB": "6th Pool B 6th Pool B",
-   "codeB": "",
+   "teamA": "Cayman islands",
+   "codeA": "CYM",
+   "teamB": "Portugal",
+   "codeB": "PRT",
    "round": "Round 10",
    "id": 10474,
-   "isFinal": 1,
+   "isFinal": 0,
+   "video": false,
+   "score": null
+  },
+  {
+   "cat": "xo",
+   "date": "2026-07-24",
+   "time": "17:00",
+   "field": "Field 7",
+   "teamA": "Netherlands",
+   "codeA": "NLD",
+   "teamB": "Jersey",
+   "codeB": "JEY",
+   "round": "Round 10",
+   "id": 10473,
+   "isFinal": 0,
+   "video": false,
+   "score": null
+  },
+  {
+   "cat": "xo",
+   "date": "2026-07-25",
+   "time": "08:30",
+   "field": "Field 4",
+   "teamA": "Netherlands",
+   "codeA": "NLD",
+   "teamB": "Cayman islands",
+   "codeB": "CYM",
+   "round": "Round 11",
+   "id": 10471,
+   "isFinal": 0,
    "video": false,
    "score": null
   },
@@ -1475,28 +1490,28 @@
    "date": "2026-07-25",
    "time": "08:30",
    "field": "Field 1",
-   "teamA": "5th Pool A 5th Pool A",
-   "codeA": "",
-   "teamB": "5th Pool B 5th Pool B",
-   "codeB": "",
+   "teamA": "Scotland",
+   "codeA": "SCO",
+   "teamB": "Jersey",
+   "codeB": "JEY",
    "round": "Round 11",
-   "id": 10471,
-   "isFinal": 1,
+   "id": 10472,
+   "isFinal": 0,
    "video": true,
    "score": null
   },
   {
    "cat": "xo",
    "date": "2026-07-25",
-   "time": "08:30",
-   "field": "Field 4",
-   "teamA": "6th Pool A 6th Pool A",
-   "codeA": "",
-   "teamB": "7th Pool A 7th Pool A",
-   "codeB": "",
-   "round": "Round 11",
-   "id": 10472,
-   "isFinal": 1,
+   "time": "11:30",
+   "field": "Field 9",
+   "teamA": "Jersey",
+   "codeA": "JEY",
+   "teamB": "Portugal",
+   "codeB": "PRT",
+   "round": "Round 12",
+   "id": 10470,
+   "isFinal": 0,
    "video": false,
    "score": null
   },
@@ -1505,28 +1520,13 @@
    "date": "2026-07-25",
    "time": "11:30",
    "field": "Field 3",
-   "teamA": "5th Pool A 5th Pool A",
-   "codeA": "",
-   "teamB": "6th Pool A 6th Pool A",
-   "codeB": "",
+   "teamA": "Netherlands",
+   "codeA": "NLD",
+   "teamB": "Scotland",
+   "codeB": "SCO",
    "round": "Round 12",
    "id": 10469,
-   "isFinal": 1,
-   "video": false,
-   "score": null
-  },
-  {
-   "cat": "xo",
-   "date": "2026-07-25",
-   "time": "11:30",
-   "field": "Field 9",
-   "teamA": "7th Pool A 7th Pool A",
-   "codeA": "",
-   "teamB": "6th Pool B 6th Pool B",
-   "codeB": "",
-   "round": "Round 12",
-   "id": 10470,
-   "isFinal": 1,
+   "isFinal": 0,
    "video": false,
    "score": null
   },
@@ -1535,13 +1535,13 @@
    "date": "2026-07-24",
    "time": "12:10",
    "field": "Field 2",
-   "teamA": "4th Pool A 4th Pool A",
-   "codeA": "",
-   "teamB": "1st Pool B 1st Pool B",
-   "codeB": "",
+   "teamA": "Ireland",
+   "codeA": "IRL",
+   "teamB": "France",
+   "codeB": "FRA",
    "round": "Quarter Final 4",
    "id": 10478,
-   "isFinal": 1,
+   "isFinal": 0,
    "video": true,
    "score": null
   },
@@ -1550,13 +1550,13 @@
    "date": "2026-07-24",
    "time": "12:10",
    "field": "Field 1",
-   "teamA": "3rd Pool A 3rd Pool A",
-   "codeA": "",
-   "teamB": "2nd Pool B 2nd Pool B",
-   "codeB": "",
+   "teamA": "Belgium",
+   "codeA": "BEL",
+   "teamB": "Wales",
+   "codeB": "WAL",
    "round": "Quarter Final 3",
    "id": 10477,
-   "isFinal": 1,
+   "isFinal": 0,
    "video": true,
    "score": null
   },
@@ -1565,13 +1565,13 @@
    "date": "2026-07-24",
    "time": "13:10",
    "field": "Field 1",
-   "teamA": "1st Pool A 1st Pool A",
-   "codeA": "",
-   "teamB": "4th Pool B 4th Pool B",
-   "codeB": "",
+   "teamA": "England",
+   "codeA": "ENG",
+   "teamB": "Germany",
+   "codeB": "DEU",
    "round": "Quarter Final 1",
    "id": 10475,
-   "isFinal": 1,
+   "isFinal": 0,
    "video": true,
    "score": null
   },
@@ -1580,29 +1580,14 @@
    "date": "2026-07-24",
    "time": "13:10",
    "field": "Field 2",
-   "teamA": "2nd Pool A 2nd Pool A",
-   "codeA": "",
-   "teamB": "3rd Pool B 3rd Pool B",
-   "codeB": "",
+   "teamA": "Switzerland",
+   "codeA": "CHE",
+   "teamB": "Italy",
+   "codeB": "ITA",
    "round": "Quarter Final 2",
    "id": 10476,
-   "isFinal": 1,
+   "isFinal": 0,
    "video": true,
-   "score": null
-  },
-  {
-   "cat": "xo",
-   "date": "2026-07-24",
-   "time": "17:00",
-   "field": "Field 9",
-   "teamA": "Loser Quarter Final 1 Loser Quarter Final 1",
-   "codeA": "",
-   "teamB": "Loser Quarter Final 3 Loser Quarter Final 3",
-   "codeB": "",
-   "round": "5th/8th Playoff 1",
-   "id": 10479,
-   "isFinal": 1,
-   "video": false,
    "score": null
   },
   {
@@ -1616,6 +1601,21 @@
    "codeB": "",
    "round": "5th/8th Playoff 2",
    "id": 10480,
+   "isFinal": 1,
+   "video": false,
+   "score": null
+  },
+  {
+   "cat": "xo",
+   "date": "2026-07-24",
+   "time": "17:00",
+   "field": "Field 9",
+   "teamA": "Loser Quarter Final 1 Loser Quarter Final 1",
+   "codeA": "",
+   "teamB": "Loser Quarter Final 3 Loser Quarter Final 3",
+   "codeB": "",
+   "round": "5th/8th Playoff 1",
+   "id": 10479,
    "isFinal": 1,
    "video": false,
    "score": null
@@ -1993,7 +1993,7 @@
    "id": 10249,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-8"
   },
   {
    "cat": "w27",
@@ -2008,7 +2008,7 @@
    "id": 10247,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "2-1"
   },
   {
    "cat": "w27",
@@ -2023,7 +2023,7 @@
    "id": 10248,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "0-6"
   },
   {
    "cat": "w27",
@@ -2638,7 +2638,7 @@
    "id": 10526,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "0-16"
   },
   {
    "cat": "m3035",
@@ -2653,7 +2653,7 @@
    "id": 10524,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "4-6"
   },
   {
    "cat": "m3035",
@@ -2668,7 +2668,7 @@
    "id": 10525,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-14"
   },
   {
    "cat": "m3035",
@@ -3178,7 +3178,7 @@
    "id": 10284,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "7-9"
   },
   {
    "cat": "x30",
@@ -3193,7 +3193,7 @@
    "id": 10285,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "14-12"
   },
   {
    "cat": "x30",
@@ -3523,7 +3523,7 @@
    "id": 10316,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "13-0"
   },
   {
    "cat": "w35",
@@ -3538,7 +3538,7 @@
    "id": 10318,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "1-11"
   },
   {
    "cat": "w35",
@@ -3973,7 +3973,7 @@
    "id": 10352,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-8"
   },
   {
    "cat": "m40",
@@ -3988,7 +3988,7 @@
    "id": 10353,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "5-2"
   },
   {
    "cat": "m40",
@@ -4003,7 +4003,7 @@
    "id": 10350,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-18"
   },
   {
    "cat": "m40",
@@ -4018,7 +4018,7 @@
    "id": 10351,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "1-11"
   },
   {
    "cat": "m40",
@@ -4333,7 +4333,7 @@
    "id": 10374,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "8-3"
   },
   {
    "cat": "w40",
@@ -4603,7 +4603,7 @@
    "id": 10398,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "12-6"
   },
   {
    "cat": "m45",
@@ -4618,7 +4618,7 @@
    "id": 10400,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "9-2"
   },
   {
    "cat": "m45",
@@ -5128,7 +5128,7 @@
    "id": 10595,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "2-6"
   },
   {
    "cat": "m5055",
