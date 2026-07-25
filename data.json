@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-25T15:49:11.514904+00:00",
+ "generated_at": "2026-07-25T20:14:46.962382+00:00",
  "match_count": 358,
  "divisions": {
   "mo": "Men's Open",
@@ -508,7 +508,7 @@
    "id": 10190,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "8-7"
   },
   {
    "cat": "wo",
@@ -838,7 +838,7 @@
    "id": 10227,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "7-1"
   },
   {
    "cat": "xo",
@@ -1708,7 +1708,7 @@
    "id": 10486,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "6-9"
   },
   {
    "cat": "w27",
@@ -2173,7 +2173,7 @@
    "id": 10259,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "8-2"
   },
   {
    "cat": "m3035",
@@ -2953,7 +2953,7 @@
    "id": 10487,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "8-6"
   },
   {
    "cat": "x30",
@@ -3313,7 +3313,7 @@
    "id": 10297,
    "isFinal": 0,
    "video": true,
-   "score": null
+   "score": "7-9"
   },
   {
    "cat": "x30",
@@ -3328,7 +3328,7 @@
    "id": 10296,
    "isFinal": 0,
    "video": false,
-   "score": null
+   "score": "3-10"
   },
   {
    "cat": "w35",
@@ -4738,7 +4738,7 @@
    "id": 10411,
    "isFinal": 0,
    "video": true,
-   "score": "5-8"
+   "score": "5-9"
   },
   {
    "cat": "m5055",
